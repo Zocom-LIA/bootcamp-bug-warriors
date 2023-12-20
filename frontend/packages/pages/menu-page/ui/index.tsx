@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '@zocom/button';
 import { useData, ChuckNorrisResponse } from '..';
 
-export const LandingPage = () => {
+export const MenuPage = () => {
 
     const [quote, setQuote] = useState<ChuckNorrisResponse|null>(null);
 
