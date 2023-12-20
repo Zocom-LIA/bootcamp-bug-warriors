@@ -3,7 +3,7 @@ import {
     RouterProvider,
   } from "react-router-dom";
   
-  import { MenuPage } from "@zocom/menu-page";
+  import { MenuPage } from "@zocom/menu";
   // import { CartPage } from "@zocom/cart-page";
   // import { DashboardPage } from "@zocom/dashboard-page";
   // import { OrderStatusPage } from "@zocom/orderStatus-page";

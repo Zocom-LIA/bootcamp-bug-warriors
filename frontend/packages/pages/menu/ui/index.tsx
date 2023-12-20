@@ -4,6 +4,7 @@ import './style.scss';
 import { useState } from 'react';
 import { Button } from '@zocom/button';
 import { useData, ChuckNorrisResponse } from '..';
+import { MenuContainer } from '@zocom/menu-container';
 
 export const MenuPage = () => {
 
@@ -17,9 +18,9 @@ export const MenuPage = () => {
     }   
 
     return (
-    <main className="landing-page">
+    <MenuContainer>
         <h1 className='quote'>{quote?.value}</h1>
         <Button onClick={() => handleFetchQuote()}>Fetch a quote!</Button>
-    </main>
+    </MenuContainer>
     )
 }
