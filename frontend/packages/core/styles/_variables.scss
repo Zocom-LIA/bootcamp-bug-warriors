@@ -4,6 +4,24 @@
 $primaryTextColor: #222;
 $primaryBg: #ccc;
 
+
+
+$alert: #EB5757;
+$ash: #EEEEEE;
+$bacon: #FBE9E9;
+$clay: #605858;
+$coal: #353131;
+$dark-mint: #489078;
+$light-mint: #DBFBF0;
+$snow: #F4F3F1;
+
+$shade-12-light: #f1f0ec12;
+$shade-24-light: #f1f0ec24;
+$shade-24-dark: #35313124;
+
+
+
+
 /* MARGINS, PADDINGS, GAPS */
 
 $baseline: 16px;
@@ -19,6 +37,7 @@ $margin-large: calc($baseline * 1.5);
 $margin: $baseline;
 $margin-sml: calc($baseline / 2);
 $margin-nano: calc($baseline / 4);
+$margin-bottom: calc($baseline * 2.640625);
 
 $gap-large: calc($baseline * 1.5);
 $gap: $baseline;
@@ -26,6 +45,9 @@ $gap-sml: calc($baseline / 2);
 $gap-nano: calc($baseline / 4);
 
 /* EFFECTS */
+
+$text-shadow-sml: 1px 1px 0px rgba(0, 0, 0, 0.30);
+$text-shadow-med: 1px 1px 2px rgba(0, 0, 0, 0.40);
 
 $radius-tier-1: 8px;
 $radius-tier-2: 4px;
@@ -56,6 +78,7 @@ $mobileBreakpoint: 480px;
 $tabletBreakpoint: 640px;
 
 /* HELPERS */
+
 
 @mixin center {
   display: flex;
