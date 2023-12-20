@@ -5,7 +5,8 @@ import { StyleTypes } from '@zocom/types';
 /* Local Component Types */
 export enum ButtonType {
     'REGULAR' = 'regular',
-    'STRETCH' = 'stretch'
+    'STRETCH' = 'stretch',
+    'MENU' = 'menu'
 }
 
 /* Component Props */
