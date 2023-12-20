@@ -4,7 +4,16 @@
     @include center;
     height: $wrapper-mobile-height;
     width: $wrapper-mobile-width;
-    background-color: black;
+    background-color: $mint;
+    margin: $margin-center;
+}
+
+.wrapper-main {
+    @include center;
+    height: $wrapper-mobile-height;
+    width: $wrapper-mobile-width;
+    background-color: $mint;
+    background-image: url(../assets/background.png);
     margin: $margin-center;
 }
 

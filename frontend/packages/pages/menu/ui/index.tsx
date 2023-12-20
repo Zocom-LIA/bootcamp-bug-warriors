@@ -18,7 +18,7 @@ export const MenuPage = () => {
   }
 
   return (
-    <Wrapper style={Styles.MOBILE}>
+    <Wrapper style={Styles.MAIN}>
       <MenuContainer>
         <h1 className="quote">{quote?.value}</h1>
         <Button onClick={() => handleFetchQuote()}>Fetch a quote!</Button>

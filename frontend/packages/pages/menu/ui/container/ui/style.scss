@@ -3,4 +3,5 @@
 .menu-container {
   @include center;
   margin: 0 $baseline $margin-bottom $baseline;
+  background-color: $clay;
 }

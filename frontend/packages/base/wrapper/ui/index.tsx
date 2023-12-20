@@ -3,7 +3,8 @@ import './style.scss'
 
 export enum Styles {
     'MOBILE' = 'mobile',
-    'TABLET' = 'tablet'
+    'TABLET' = 'tablet',
+    'MAIN' = 'main'
 }
 
 export type WrapperProps = {
