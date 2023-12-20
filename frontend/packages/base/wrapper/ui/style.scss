@@ -1,0 +1,16 @@
+@use '@zocom/styles' as *;
+
+.wrapper-mobile {
+    @include center;
+    height: $wrapper-mobile-height;
+    width: $wrapper-mobile-width;
+    background-color: black;
+    margin: $margin-center;
+}
+
+.wrapper-tablet {
+    @include center;
+    height: $wrapper-tablet-height;
+    width: $wrapper-tablet-width;
+}
+

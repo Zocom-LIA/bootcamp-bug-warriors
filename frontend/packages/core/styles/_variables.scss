@@ -19,7 +19,12 @@ $shade-12-light: #f1f0ec12;
 $shade-24-light: #f1f0ec24;
 $shade-24-dark: #35313124;
 
+/* WRAPPER DIMENSIONS */
 
+$wrapper-mobile-height : 52.75rem;
+$wrapper-mobile-width : 30rem;
+$wrapper-tablet-height : 74.625rem;
+$wrapper-tablet-width: 52.12rem; 
 
 
 /* MARGINS, PADDINGS, GAPS */
@@ -32,6 +37,7 @@ $padding: $baseline;
 $padding-sml: calc($baseline / 2);
 $padding-nano: calc($baseline / 4);
 
+$margin-center: 0 auto;
 $margin-huge: calc($baseline * 2);
 $margin-large: calc($baseline * 1.5);
 $margin: $baseline;
