@@ -3,7 +3,7 @@ import {
     RouterProvider,
   } from "react-router-dom";
   
-  import { MenuPage } from "@zocom/menu";
+  import { Menu } from "@zocom/menu";
   // import { CartPage } from "@zocom/cart-page";
   // import { DashboardPage } from "@zocom/dashboard-page";
   // import { OrderStatusPage } from "@zocom/orderStatus-page";
@@ -12,7 +12,7 @@ import {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <MenuPage />,
+      element: <Menu />,
     },
     // {
     //   path: "/cart",

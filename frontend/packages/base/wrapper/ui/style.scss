@@ -9,7 +9,7 @@
 }
 
 .wrapper-main {
-    @include center;
+    @include wrapperCenter;
     height: $wrapper-mobile-height;
     width: $wrapper-mobile-width;
     background-color: $mint;
