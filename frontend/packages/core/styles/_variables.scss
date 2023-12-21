@@ -37,7 +37,7 @@ $padding: $baseline;
 $padding-sml: calc($baseline / 2);
 $padding-nano: calc($baseline / 4);
 
-$margin-center: 0 auto;
+$margin-center: auto auto;
 $margin-huge: calc($baseline * 2);
 $margin-large: calc($baseline * 1.5);
 $margin: $baseline;
@@ -93,11 +93,24 @@ $tabletBreakpoint: 640px;
   flex-direction: column;
 }
 
+@mixin wrapperCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @mixin column {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: $gap-sml;
+}
+
+@mixin columnNoGaps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @mixin row {

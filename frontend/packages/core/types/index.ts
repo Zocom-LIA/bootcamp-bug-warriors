@@ -10,3 +10,19 @@ export enum StyleTypes {
   "DARK" = "dark",
   "LIGHT" = "light",
 }
+
+export interface BaseProduct {
+  name: string,
+  desc: string,
+  price: number
+}
+
+interface Wonton extends BaseProduct {
+  ingredients: string[];
+}
+
+interface Dip extends BaseProduct {
+
+}
+
+export type Product = Wonton | Dip;
