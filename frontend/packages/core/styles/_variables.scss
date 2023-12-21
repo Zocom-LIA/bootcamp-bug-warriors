@@ -30,6 +30,8 @@ $wrapper-tablet-width: 52.12rem;
 /* MARGINS, PADDINGS, GAPS */
 
 $baseline: 16px;
+$nano-dimension: 1.5rem;
+$small-dimension: 4rem;
 
 $padding-huge: calc($baseline * 2);
 $padding-large: calc($baseline * 1.5);
@@ -38,7 +40,7 @@ $padding-sml: calc($baseline / 2);
 $padding-nano: calc($baseline / 4);
 
 $margin-center: auto auto;
-$margin-huge: calc($baseline * 2);
+$margin-huge: calc($baseline * 4);
 $margin-large: calc($baseline * 1.5);
 $margin: $baseline;
 $margin-sml: calc($baseline / 2);
@@ -58,6 +60,7 @@ $text-shadow-med: 1px 1px 2px rgba(0, 0, 0, 0.40);
 $radius-tier-1: 8px;
 $radius-tier-2: 4px;
 $radius-tier-3: 2px;
+$radius-circle: 50%;
 
 $shadow-sml:
   0px 0px 1.2px rgba(0, 0, 0, 0.025),
@@ -93,7 +96,7 @@ $tabletBreakpoint: 640px;
   flex-direction: column;
 }
 
-@mixin wrapperCenter {
+@mixin centerElement {
   position: absolute;
   top: 50%;
   left: 50%;
