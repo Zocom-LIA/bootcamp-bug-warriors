@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 import './style.scss'
 
-type MenuContainerProps = {
+type MenuItemsContainerProps = {
   children: ReactNode | ReactNode[],
 }
 
-export function MenuContainer({ children } :MenuContainerProps) {
+export function MenuItemsContainer({ children } :MenuItemsContainerProps) {
   return (
     <main className='menu-container'>
       {children}
