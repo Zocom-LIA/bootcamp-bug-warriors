@@ -4,28 +4,28 @@
 $primaryTextColor: #222;
 $primaryBg: #ccc;
 
-
-
-$alert: #EB5757;
-$ash: #EEEEEE;
-$bacon: #FBE9E9;
+$alert: #eb5757;
+$ash: #eeeeee;
+$bacon: #fbe9e9;
 $clay: #605858;
 $coal: #353131;
 $dark-mint: #489078;
-$light-mint: #DBFBF0;
-$snow: #F4F3F1;
-$mint: #8ED8BF;
+$light-mint: #dbfbf0;
+$snow: #f4f3f1;
+$mint: #8ed8bf;
 $shade-12-light: #f1f0ec12;
 $shade-24-light: #f1f0ec24;
 $shade-24-dark: #35313124;
 
 /* WRAPPER DIMENSIONS */
 
-$wrapper-mobile-height : 52.75rem;
-$wrapper-mobile-width : 30rem;
-$wrapper-tablet-height : 74.625rem;
-$wrapper-tablet-width: 52.12rem; 
+$wrapper-mobile-height: 52.75rem;
+$wrapper-mobile-width: 30rem;
+$wrapper-tablet-height: 74.625rem;
+$wrapper-tablet-width: 52.12rem;
 
+/* SKELETON LOADER */
+$skeleton-loader-bg-color: #484040;
 
 /* MARGINS, PADDINGS, GAPS */
 
@@ -54,32 +54,25 @@ $gap-nano: calc($baseline / 4);
 
 /* EFFECTS */
 
-$text-shadow-sml: 1px 1px 0px rgba(0, 0, 0, 0.30);
-$text-shadow-med: 1px 1px 2px rgba(0, 0, 0, 0.40);
+$text-shadow-sml: 1px 1px 0px rgba(0, 0, 0, 0.3);
+$text-shadow-med: 1px 1px 2px rgba(0, 0, 0, 0.4);
 
 $radius-tier-1: 8px;
 $radius-tier-2: 4px;
 $radius-tier-3: 2px;
 $radius-circle: 50%;
 
-$shadow-sml:
-  0px 0px 1.2px rgba(0, 0, 0, 0.025),
-  0px 0px 3.3px rgba(0, 0, 0, 0.019),
-  0px 0px 10px rgba(0, 0, 0, 0.012),
+$shadow-sml: 0px 0px 1.2px rgba(0, 0, 0, 0.025),
+  0px 0px 3.3px rgba(0, 0, 0, 0.019), 0px 0px 10px rgba(0, 0, 0, 0.012),
   0px 0px 17.9px rgba(0, 0, 0, 0.009);
 
-$shadow-medium:
-  0px 0px 3.2px rgba(0, 0, 0, 0.035),
-  0px 0px 7.3px rgba(0, 0, 0, 0.029),
-  0px 0px 20px rgba(0, 0, 0, 0.022),
+$shadow-medium: 0px 0px 3.2px rgba(0, 0, 0, 0.035),
+  0px 0px 7.3px rgba(0, 0, 0, 0.029), 0px 0px 20px rgba(0, 0, 0, 0.022),
   0px 0px 40.9px rgba(0, 0, 0, 0.019);
 
-$shadow-large:
-  0px 0px 2.2px rgba(0, 0, 0, 0.015),
-  0px 0px 5.3px rgba(0, 0, 0, 0.021),
-  0px 0px 10px rgba(0, 0, 0, 0.009),
-  0px 0px 17.9px rgba(0, 0, 0, 0.019),
-  0px 0px 33.4px rgba(0, 0, 0, 0.042),
+$shadow-large: 0px 0px 2.2px rgba(0, 0, 0, 0.015),
+  0px 0px 5.3px rgba(0, 0, 0, 0.021), 0px 0px 10px rgba(0, 0, 0, 0.009),
+  0px 0px 17.9px rgba(0, 0, 0, 0.019), 0px 0px 33.4px rgba(0, 0, 0, 0.042),
   0px 0px 80px rgba(0, 0, 0, 0.2);
 
 /* RESPONSIVE */
@@ -87,7 +80,6 @@ $mobileBreakpoint: 480px;
 $tabletBreakpoint: 640px;
 
 /* HELPERS */
-
 
 @mixin center {
   display: flex;
