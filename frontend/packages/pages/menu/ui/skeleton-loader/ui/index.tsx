@@ -1,4 +1,4 @@
-import './style.scss';
+import "./style.scss";
 
 type SkeletonLoaderProps = {
   type: string;
@@ -9,7 +9,7 @@ export const SkeletonLoader = ({ type, active }: SkeletonLoaderProps) => {
   return (
     <>
       {active && (
-        <div className='skeleton-loader'>
+        <div className="skeleton-loader">
           <div className={`${type}`} />
         </div>
       )}

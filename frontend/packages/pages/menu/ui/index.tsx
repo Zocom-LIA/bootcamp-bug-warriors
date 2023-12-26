@@ -8,6 +8,7 @@ import { Product } from "@zocom/types";
 import { Button } from "@zocom/button";
 import { CartButton, CartButtonStyles, Animation } from "@zocom/cart-button";
 import { useEffect, useState } from "react";
+import { SkeletonLoader } from "@zocom/skeleton-loader";
 
 export const Menu = () => {
   const [animate, setAnimate] = useState(false);
@@ -43,6 +44,7 @@ export const Menu = () => {
           style={CartButtonStyles.MENU}
           animate={animate ? Animation.ANIMATE : Animation.NONE}
         ></CartButton>
+        <SkeletonLoader type={"menu-item"} active={true} />
         <h1 className="quote">Karlstad</h1>
         <Button
           onClick={() =>
