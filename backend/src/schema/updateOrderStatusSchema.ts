@@ -1,38 +1,24 @@
 import Joi from "joi";
 import {
   CustomMiddleware,
-  OrderData,
+  OrderStatus,
   ValidationErrorResponse,
 } from "src/types";
 import { HttpStatusCode } from "src/utils/httpCodes";
 import { createStandardResponse } from "src/utils/responses";
 
-const wontonSchema = Joi.object({
-  name: Joi.string().required(),
-  desc: Joi.string().required(),
-  price: Joi.number().greater(0).required(),
-  quantity: Joi.number().integer().greater(0).required(),
-  ingredients: Joi.array().items(Joi.string()).required(),
-  preparationTime: Joi.number().greater(0).required(),
+const updateOrderStatusSchema = Joi.object({
+  newStatus: Joi.string()
+    .valid(...Object.values(OrderStatus))
+    .required(),
 });
 
-const dipSchema = Joi.object({
-  name: Joi.string().required(),
-  desc: Joi.string().required(),
-  price: Joi.number().greater(0).required(),
-  quantity: Joi.number().integer().greater(0).required(),
-});
-
-export const orderSchema = Joi.object({
-  wonton: Joi.array().items(wontonSchema).optional(),
-  dip: Joi.array().items(dipSchema).optional(),
-}).or("wonton", "dip");
-
-export const validateOrderData: CustomMiddleware = {
+export const validateUpdateOrderStatus: CustomMiddleware = {
   before: async (handler) => {
     try {
-      const parsedBody = JSON.parse(handler.event.body) as OrderData;
-      await orderSchema.validateAsync(parsedBody);
+      await updateOrderStatusSchema.validateAsync(
+        JSON.parse(handler.event.body)
+      );
     } catch (error) {
       if (error instanceof Joi.ValidationError) {
         const errorResponse: ValidationErrorResponse = {
@@ -52,9 +38,7 @@ export const validateOrderData: CustomMiddleware = {
       } else {
         handler.response = createStandardResponse(
           HttpStatusCode.INTERNAL_SERVER_ERROR,
-          {
-            message: "An unexpected error occurred",
-          }
+          { message: "An unexpected error occurred" }
         );
         return handler.response;
       }

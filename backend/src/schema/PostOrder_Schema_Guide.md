@@ -4,7 +4,7 @@ The `postOrder` function is designed to process orders containing two types of i
 
 ## Request Body Format
 
-The request body should be a JSON object with two main properties: `wonton` and `dip`. Each of these is an array containing objects that represent individual items of that type.
+The request body should be a JSON object with one main properties: `wonton` or `dip` or both. Each of these is an array containing objects that represent individual items of that type.
 
 ### Wonton Items
 
