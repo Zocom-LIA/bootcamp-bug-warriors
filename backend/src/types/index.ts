@@ -126,3 +126,18 @@ export type UpdateOrderParams = {
     ":s": { S: OrderStatus };
   };
 };
+
+export type QueryParams = {
+  TableName: string;
+  IndexName: string;
+  KeyConditionExpression: string;
+  ExpressionAttributeNames: {
+    "#status": string;
+    "#items": string;
+    "#orderTime": string;
+  };
+  ExpressionAttributeValues: {
+    ":statusVal": { S: OrderStatus };
+  };
+  ProjectionExpression: string;
+};

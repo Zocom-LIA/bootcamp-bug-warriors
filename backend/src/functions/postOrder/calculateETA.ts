@@ -1,5 +1,5 @@
 import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
-import { IDynamoDBOrderItem, OrderStatus } from "src/types";
+import { IDynamoDBOrderItem, OrderStatus, QueryParams } from "src/types";
 import { dynamoDbConfig } from "src/database/core/dbConfig";
 
 const client = new DynamoDBClient(dynamoDbConfig);
@@ -9,7 +9,7 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
     let totalLoadTime = 0;
     const currentTime = new Date().getTime();
 
-    const params = {
+    const params: QueryParams = {
       TableName: "Yum-Yum-table",
       IndexName: "StatusIndex",
       KeyConditionExpression: "#status = :statusVal",
@@ -44,7 +44,7 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
           orderTimeAttr &&
           orderTimeAttr.S &&
           orderStatusAttr &&
-          orderStatusAttr.S === "Pending"
+          orderStatusAttr.S === OrderStatus.Pending
         ) {
           const orderPlacedTime = new Date(orderTimeAttr.S).getTime();
           const timeElapsed = (currentTime - orderPlacedTime) / 60000;
