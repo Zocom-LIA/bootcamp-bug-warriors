@@ -27,4 +27,17 @@ const NonExistingOrder = (orderId: string): HttpError => {
   );
 };
 
-export { unauthorizedAccessError, priceMismatchError, NonExistingOrder };
+const ErrorCreatingAdminAccount = (): HttpError => {
+  return createHttpError(
+    HttpStatusCode.INTERNAL_SERVER_ERROR,
+    "Error creating admin",
+    { type: "InternalServerError" }
+  );
+};
+
+export {
+  unauthorizedAccessError,
+  priceMismatchError,
+  NonExistingOrder,
+  ErrorCreatingAdminAccount,
+};

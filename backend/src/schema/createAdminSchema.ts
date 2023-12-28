@@ -1,25 +1,19 @@
 import Joi from "joi";
-import {
-  CustomMiddleware,
-  OrderStatus,
-  ValidationErrorResponse,
-} from "src/types";
+import { CustomMiddleware, ValidationErrorResponse } from "src/types";
 import { HttpStatusCode } from "src/utils/httpCodes";
 import { createStandardResponse } from "src/utils/responses";
 
-const updateOrderStatusSchema = Joi.object({
-  newStatus: Joi.string()
-    .valid(...Object.values(OrderStatus))
-    .required(),
+export const adminDetailsSchema = Joi.object({
+  username: Joi.string().alphanum().min(3).max(30).required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
 });
 
-export const validateUpdateOrderStatus = (): CustomMiddleware => {
+export const validateAdminDetails = (): CustomMiddleware => {
   return {
     before: async (handler) => {
       try {
-        await updateOrderStatusSchema.validateAsync(
-          JSON.parse(handler.event.body)
-        );
+        await adminDetailsSchema.validateAsync(JSON.parse(handler.event.body));
       } catch (error) {
         if (error instanceof Joi.ValidationError) {
           const errorResponse: ValidationErrorResponse = {

@@ -27,6 +27,10 @@ export const DynamoResources: AWS["resources"] = {
             AttributeName: "status",
             AttributeType: "S",
           },
+          {
+            AttributeName: "username",
+            AttributeType: "S",
+          },
         ],
         KeySchema: [
           {
@@ -68,7 +72,18 @@ export const DynamoResources: AWS["resources"] = {
               ProjectionType: "ALL",
             },
           },
-          // Additional GSIs as needed
+          {
+            IndexName: "UsernameIndex",
+            KeySchema: [
+              {
+                AttributeName: "username",
+                KeyType: "HASH",
+              },
+            ],
+            Projection: {
+              ProjectionType: "ALL",
+            },
+          },
         ],
       },
     },

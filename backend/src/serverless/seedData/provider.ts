@@ -7,7 +7,7 @@ const providerConfig = {
     role: process.env.AWS_IAM_ROLE,
   },
   environment: {
-    YUM_YUM_TABLE: process.env.YUM_YUM_TABLE,
+    YUM_YUM_TABLE: "Yum-Yum-table",
   },
 } as const;
 
