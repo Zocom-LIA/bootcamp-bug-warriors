@@ -10,7 +10,16 @@ import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
 import { SauceButtons } from '@zocom/sauce-buttons';
 
-const sauceList = ['Sweet chili', 'Soy', 'Teriyaki', 'Sriracha', 'Peanut'];
+//TODO: Get from backend
+const sauceList = [
+  'sweet chili',
+  'sweet and sour',
+  'guacamole',
+  'wonton sd',
+  'hot mango',
+  'chili mayo',
+];
+
 export const Menu = () => {
   const [animate, setAnimate] = useState(false);
   const [selectedSauces, setSelectedSauces] = useState<string[]>([]);
