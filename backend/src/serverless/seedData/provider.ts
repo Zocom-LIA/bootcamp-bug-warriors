@@ -1,11 +1,12 @@
 const providerConfig = {
-  name: "aws",
-  runtime: "nodejs18.x",
+  name: 'aws',
+  runtime: 'nodejs18.x',
   profile: process.env.AWS_PROFILE,
-  region: "eu-north-1",
+  region: 'eu-north-1',
   iam: {
     role: process.env.AWS_IAM_ROLE,
   },
+  deploymentMethod: 'direct',
   environment: {
     YUM_YUM_TABLE: process.env.YUM_YUM_TABLE,
   },
