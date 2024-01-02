@@ -1,0 +1,22 @@
+@use "@zocom/styles" as *;
+
+.menu-button {
+  display: flex;
+  @include column;
+  width: 100%;
+  background-color: $clay;
+  color: $snow;
+  border-bottom: 1px dashed $shade-24-light;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  width: 100%;
+}
+
+.menu-item-ingridients {
+  color: $snow;
+  width: 100%;
+}
