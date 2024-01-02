@@ -55,6 +55,33 @@ export const Menu = () => {
           style={CartButtonStyles.MENU}
           animate={animate ? Animation.ANIMATE : Animation.NONE}
         ></CartButton>
+        <h1 className="quote">Karlstad</h1>
+        <MenuButton
+          menuItem={["WONTON", "9 sek", "persilja"]}
+          onClick={() =>
+            handleAddItem({
+              name: "Karlstad",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
+              ],
+              price: 9,
+            })
+          }
+        ></MenuButton>
+        <Button
+          onClick={() =>
+            handleAddItem({
+              name: "Karlstad",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
         <h1 className='quote'>Karlstad</h1>
         <Button
           onClick={() =>
@@ -76,6 +103,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleIncrease({
+              name: "Karlstad",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Karlstad',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -93,6 +127,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleDecrease({
+              name: "Karlstad",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Karlstad',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -107,6 +148,17 @@ export const Menu = () => {
         >
           -
         </Button>
+        <h1 className="quote">Bangkok</h1>
+        <Button
+          onClick={() =>
+            handleAddItem({
+              name: "Bangkok",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
         <h1 className='quote'>Bangkok</h1>
         <Button
           onClick={() =>
@@ -128,6 +180,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleIncrease({
+              name: "Bangkok",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Bangkok',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -145,6 +204,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleDecrease({
+              name: "Bangkok",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Bangkok',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -159,6 +225,17 @@ export const Menu = () => {
         >
           -
         </Button>
+        <h1 className="quote">Paris</h1>
+        <Button
+          onClick={() =>
+            handleAddItem({
+              name: "Paris",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
         <h1 className='quote'>Paris</h1>
         <Button
           onClick={() =>
@@ -180,6 +257,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleIncrease({
+              name: "Paris",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Paris',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -197,6 +281,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleDecrease({
+              name: "Paris",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Paris',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -211,6 +302,17 @@ export const Menu = () => {
         >
           -
         </Button>
+        <h1 className="quote">Oaxaca</h1>
+        <Button
+          onClick={() =>
+            handleAddItem({
+              name: "Oaxaca",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
         <h1 className='quote'>Oaxaca</h1>
         <Button
           onClick={() =>
@@ -232,6 +334,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleIncrease({
+              name: "Oaxaca",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Oaxaca',
               desc: 'En god friterad wonton.',
               ingredients: [
@@ -249,6 +358,13 @@ export const Menu = () => {
         <Button
           onClick={() =>
             handleDecrease({
+              name: "Oaxaca",
+              desc: "En god friterad wonton.",
+              ingredients: [
+                "kantarell",
+                "scharlottenlök",
+                "morot",
+                "bladpersilja",
               name: 'Oaxaca',
               desc: 'En god friterad wonton.',
               ingredients: [
