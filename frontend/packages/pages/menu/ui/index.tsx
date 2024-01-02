@@ -1,5 +1,5 @@
 import './style.scss';
-import { MenuContainer } from '@zocom/menu-container';
+import { MenuItemsContainer } from '@zocom/menu-container';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { addItem, decrease, increase } from '@zocom/cart-actions';
 import { RootState } from '@zocom/store';
@@ -8,7 +8,6 @@ import { Product } from '@zocom/types';
 import { Button } from '@zocom/button';
 import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
-import { SkeletonLoader } from "@zocom/skeleton-loader";
 import { SauceButtons } from '@zocom/sauce-buttons';
 
 //TODO: Get from backend
@@ -51,13 +50,12 @@ export const Menu = () => {
 
   return (
     <Wrapper style={Styles.MAIN}>
-      <MenuContainer>
       <MenuItemsContainer>
         <CartButton
           style={CartButtonStyles.MENU}
           animate={animate ? Animation.ANIMATE : Animation.NONE}
         ></CartButton>
-               <h1 className='quote'>Karlstad</h1>
+        <h1 className='quote'>Karlstad</h1>
         <Button
           onClick={() =>
             handleAddItem({
@@ -270,7 +268,6 @@ export const Menu = () => {
           setSelectedSauces={setSelectedSauces}
           selectedSauces={selectedSauces!}
         />
-      </MenuContainer>
       </MenuItemsContainer>
     </Wrapper>
   );
