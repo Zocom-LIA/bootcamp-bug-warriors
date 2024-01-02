@@ -8,6 +8,7 @@ import { Product } from '@zocom/types';
 import { Button } from '@zocom/button';
 import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
+import { SkeletonLoader } from "@zocom/skeleton-loader";
 import { SauceButtons } from '@zocom/sauce-buttons';
 
 //TODO: Get from backend
@@ -22,8 +23,8 @@ const sauceList = [
 
 export const Menu = () => {
   const [animate, setAnimate] = useState(false);
-  const [selectedSauces, setSelectedSauces] = useState<string[]>([]);
   const cartItems = useSelector((state: RootState) => state.cart?.items);
+  const [selectedSauces, setSelectedSauces] = useState<string[]>([]);
   console.log(cartItems);
   const dispatch = useDispatch();
 
@@ -51,11 +52,12 @@ export const Menu = () => {
   return (
     <Wrapper style={Styles.MAIN}>
       <MenuContainer>
+      <MenuItemsContainer>
         <CartButton
           style={CartButtonStyles.MENU}
           animate={animate ? Animation.ANIMATE : Animation.NONE}
         ></CartButton>
-        <h1 className='quote'>Karlstad</h1>
+               <h1 className='quote'>Karlstad</h1>
         <Button
           onClick={() =>
             handleAddItem({
@@ -269,6 +271,7 @@ export const Menu = () => {
           selectedSauces={selectedSauces!}
         />
       </MenuContainer>
+      </MenuItemsContainer>
     </Wrapper>
   );
 };

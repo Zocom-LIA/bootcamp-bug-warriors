@@ -1,0 +1,4 @@
+{
+  "name": "@zocom/skeleton-loader",
+  "main": "./index.ts"
+}
