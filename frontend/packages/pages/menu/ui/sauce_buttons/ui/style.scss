@@ -1,0 +1,21 @@
+@use '@zocom/styles' as *;
+
+.sauce_buttons-container {
+  @include row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.sauce_button {
+  background-color: $shade-24-light;
+  padding: 0rem, 0.75rem;
+  border-radius: 0.25rem;
+  width: 5.75rem;
+  height: 2rem;
+  color: $snow;
+  flex-basis: 25%;
+  font-size: 0.875rem;
+}
+.sauce_button-active {
+  background-color: $coal;
+}
