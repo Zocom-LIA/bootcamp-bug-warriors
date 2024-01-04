@@ -8,7 +8,7 @@ const providerConfig = {
   },
   deploymentMethod: 'direct',
   environment: {
-    YUM_YUM_TABLE: process.env.YUM_YUM_TABLE,
+    YUM_YUM_TABLE: "Yum-Yum-table",
   },
 } as const;
 
