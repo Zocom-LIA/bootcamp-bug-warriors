@@ -16,7 +16,6 @@ export enum ButtonType {
 /* Component Props */
 type ButtonProps = {
   children: ReactNode | ReactNode[];
-  style?: StyleTypes;
   type?: ButtonType;
   onClick: () => void;
 };
@@ -25,11 +24,10 @@ type ButtonProps = {
 export const Button = ({
   children,
   type = ButtonType.REGULAR, // default value
-  style = StyleTypes.DEFAULT, // default value
   onClick,
 }: ButtonProps) => {
   return (
-    <button className={`button__${type}--${style}`} onClick={() => onClick()}>
+    <button className={`button__${type}`} onClick={() => onClick()}>
       {children}
     </button>
   );

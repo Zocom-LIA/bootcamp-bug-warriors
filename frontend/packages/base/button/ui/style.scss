@@ -22,35 +22,27 @@ button {
 
   &.button {
     &__regular {
-      &--default {
-        @include regularBase();
-        background-color: $coal;
-      }
+      @include regularBase();
+      background-color: $coal;
     }
 
     &__inverted {
-      &--default {
-        @include regularBase();
-        border: solid;
-        border-width: calc($baseline / 8);
-        border-color: $snow;
-        background-color: transparent;
-      }
+      @include regularBase();
+      border: solid;
+      border-width: calc($baseline / 8);
+      border-color: $snow;
+      background-color: transparent;
     }
 
     &__ready {
-      &--default {
-        @include regularBase();
-        background-color: $alert;
-      }
+      @include regularBase();
+      background-color: $alert;
     }
 
     &__served {
-      &--default {
-        @include regularBase();
-        @include fontsizeLarge;
-        background-color: $dark-mint;
-      }
+      @include regularBase();
+      @include fontsizeLarge;
+      background-color: $dark-mint;
     }
   }
 }
