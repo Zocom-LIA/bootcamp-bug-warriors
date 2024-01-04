@@ -5,10 +5,11 @@ import { addItem } from '@zocom/cart-actions';
 import { RootState } from '@zocom/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '@zocom/types';
-import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
+// import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
 import { SauceButtons } from '@zocom/sauce-buttons';
 import { MenuButton } from '@zocom/menu-button';
+import { TopBar } from '@zocom/top-bar';
 
 //TODO: Get from backend
 const sauceList = [
@@ -19,31 +20,46 @@ const sauceList = [
   'hot mango',
   'chili mayo',
 ];
-
 const menuItems = [
   {
     name: 'Karlstad',
     desc: 'En god friterad wonton.',
     ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
     price: 9,
+    preparationTime: 4,
   },
   {
     name: 'Bangkok',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
+    desc: 'En god friterad wonton med smaker från Bangkoks gator.',
     price: 9,
+    quantity: 2,
+    ingredients: ['morot', 'salladslök', 'chili', 'kokos', 'lime', 'koriander'],
+    preparationTime: 4,
   },
   {
     name: 'Oaxaca',
     desc: 'En god friterad wonton.',
     ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
     price: 9,
+    preparationTime: 4,
+  },
+  {
+    name: 'Hon Chi Minh',
+    desc: 'En god friterad wonton.',
+    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
+    price: 9,
+    preparationTime: 4,
   },
   {
     name: 'Paris',
     desc: 'En god friterad wonton.',
     ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
     price: 9,
+    preparationTime: 4,
+  },
+  {
+    name: 'Dipsås',
+    price: 19,
   },
 ];
 
@@ -57,47 +73,34 @@ export const Menu = () => {
   const handleAddItem = (item: Product) => {
     dispatch(addItem(item));
     setAnimate(true);
+
+    // const handleIncrease = (item: Product) => {
+    //   dispatch(increase(item));
+    // };
+    // const handleDecrease = (item: Product) => {
+    //   dispatch(decrease(item));
+    // };
+
+    // useEffect(() => {
+    //   if (animate) {
+    //     const timer = setTimeout(() => {
+    //       setAnimate(false);
+    //     }, 600);
+    //     return () => clearTimeout(timer);
+    //   }
+    // }, [animate]);
   };
-  // const handleIncrease = (item: Product) => {
-  //   dispatch(increase(item));
-  // };
-  // const handleDecrease = (item: Product) => {
-  //   dispatch(decrease(item));
-  // };
-
-  useEffect(() => {
-    if (animate) {
-      // Remove the animation class after it completes
-      const timer = setTimeout(() => {
-        setAnimate(false);
-      }, 600); // This should match the duration of your animation
-      return () => clearTimeout(timer);
-    }
-  }, [animate]);
-
   return (
     <Wrapper style={Styles.MAIN}>
+      <TopBar />
       <MenuItemsContainer>
-        <CartButton
-          style={CartButtonStyles.MENU}
-          animate={animate ? Animation.ANIMATE : Animation.NONE}
-        ></CartButton>
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[0])}
-        />
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[1])}
-        />
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[2])}
-        />
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[3])}
-        />
+        <h1 className='menu-heading'>MENY</h1>
+        {menuItems.map((item) => (
+          <MenuButton
+            menuItem={[item.name, item.price, item.ingredients?.join(', ')]}
+            onClick={() => handleAddItem(item)}
+          />
+        ))}
         <SauceButtons
           sauceList={sauceList}
           setSelectedSauces={setSelectedSauces}
