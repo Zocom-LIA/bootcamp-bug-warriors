@@ -1,37 +1,48 @@
-@use '@zocom/styles' as *;
+@use "@zocom/styles" as *;
 
 @mixin regularBase {
-    @include fontsizeRegular;
-    font-weight: 700;
-    background-color: $primaryBg;
-    padding: $padding $padding-large;
-    color: $primaryTextColor;
-    transition: all .2s ease;
+  width: 100%;
+  @include fontsizeLarge;
+  font-weight: 700;
+  padding: $padding-large $padding-large;
+  color: $snow;
+  transition: all 0.2s ease;
 
-    &:hover {
-        filter: brightness(.95);
-    }
+  &:hover {
+    filter: brightness(0.95);
+  }
 
-    &:active {
-        filter: brightness(1.05);
-    }
+  &:active {
+    filter: brightness(1.05);
+  }
 }
 
 button {
-    border-radius: $radius-tier-1;
+  border-radius: $radius-tier-2;
 
-    &.button {
-        &__regular {
-            &--default {
-                @include regularBase();
-            }
-        }
-        
-        &__stretch {            
-            &--default {
-                width: 100%;
-                @include regularBase();
-            }
-        }
+  &.button {
+    &__regular {
+      @include regularBase();
+      background-color: $coal;
     }
+
+    &__inverted {
+      @include regularBase();
+      border: solid;
+      border-width: calc($baseline / 8);
+      border-color: $snow;
+      background-color: transparent;
+    }
+
+    &__ready {
+      @include regularBase();
+      background-color: $alert;
+    }
+
+    &__served {
+      @include regularBase();
+      @include fontsizeLarge;
+      background-color: $dark-mint;
+    }
+  }
 }
