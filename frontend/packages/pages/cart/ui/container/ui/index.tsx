@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 import './style.scss'
 
-type MenuItemsContainerProps = {
+type CartItemsContainerProps = {
   children: ReactNode | ReactNode[],
 }
 
-export function MenuItemsContainer({ children } :MenuItemsContainerProps) {
+export function CartItemsContainer({ children } :CartItemsContainerProps) {
   return (
-    <main className='menu-container'>
+    <main className='cart-container'>
       {children}
     </main>
   )

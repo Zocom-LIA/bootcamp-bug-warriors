@@ -24,7 +24,7 @@
 }
 
 .wrapper-cart {
-    @include center;
+    @include centerElement;
     height: $wrapper-mobile-height;
     width: $wrapper-mobile-width;
     background-color: $ash;

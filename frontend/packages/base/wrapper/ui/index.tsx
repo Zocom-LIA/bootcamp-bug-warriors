@@ -5,7 +5,7 @@ export enum Styles {
     'MOBILE' = 'mobile',
     'TABLET' = 'tablet',
     'MAIN' = 'main',
-    'CART' = 'cart',
+    'CART' = 'cart'
 }
 
 export type WrapperProps = {
