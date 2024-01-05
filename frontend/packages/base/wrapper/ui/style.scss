@@ -23,3 +23,10 @@
     width: $wrapper-tablet-width;
 }
 
+.wrapper-cart {
+    @include centerElement;
+    height: $wrapper-mobile-height;
+    width: $wrapper-mobile-width;
+    background-color: $ash;
+    margin: $margin-center;
+}

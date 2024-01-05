@@ -1,7 +1,7 @@
-import "./style.scss";
-import { ReactNode } from "react";
-import { StyleTypes } from "@zocom/types";
-import React from "react";
+import './style.scss';
+import { ReactNode } from 'react';
+import { StyleTypes } from '@zocom/types';
+import React from 'react';
 
 /* Component Props */
 type MenuButtonProps = {
@@ -13,12 +13,13 @@ type MenuButtonProps = {
 export const MenuButton = ({ menuItem, onClick }: MenuButtonProps) => {
   return (
     <div className={`menu-button`} onClick={() => onClick()}>
-      <div className="menu-item">
-        <div>{menuItem[0]}</div>
-        {/* <div className="spacing">{".".repeat(20)}</div> */}
-        <div>{menuItem[1]}</div>
+
+      <div className='menu-item'>
+        <span className='menu-item-name'>{menuItem[0]}&nbsp; </span>
+        <span className='menu-item-price'>&nbsp; {menuItem[1]}</span>
       </div>
-      <div className="menu-item-ingridients">{menuItem[2]}</div>
+
+      <div className='menu-item-ingridients'>{menuItem[2]}</div>
     </div>
   );
 };

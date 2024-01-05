@@ -32,4 +32,15 @@ export const functions = {
       },
     ],
   },
+  createAdmin: {
+    handler: "src/functions/Admin/createAdmin/index.handler",
+    events: [
+      {
+        http: {
+          method: "POST",
+          path: "/admin/create",
+        },
+      },
+    ],
+  },
 };
