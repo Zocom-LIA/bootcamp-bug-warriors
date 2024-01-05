@@ -14,11 +14,13 @@ export enum StyleTypes {
 export interface BaseProduct {
   name: string,
   desc: string,
-  price: number
+  price: number,
+  quantity: number
 }
 
 interface Wonton extends BaseProduct {
   ingredients: string[];
+  preperationTime: number;
 }
 
 interface Dip extends BaseProduct {
