@@ -4,7 +4,8 @@ import './style.scss'
 export enum Styles {
     'MOBILE' = 'mobile',
     'TABLET' = 'tablet',
-    'MAIN' = 'main'
+    'MAIN' = 'main',
+    'CART' = 'cart'
 }
 
 export type WrapperProps = {

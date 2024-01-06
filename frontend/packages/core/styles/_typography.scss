@@ -15,12 +15,17 @@ $base: 16px;
     line-height: 120%;
 }
 
+@mixin fontsizeLarge {
+  font-size: calc($base * 1.6);
+  line-height: 120%;
+}
+
 @mixin fontsizeRegular {
-    font-size: $base;
-    line-height: 140%;
+  font-size: $base;
+  line-height: 140%;
 }
 
 @mixin fontsizeSmall {
-    font-size: calc($base * .8);
-    line-height: 120%;
+  font-size: calc($base * 0.8);
+  line-height: 120%;
 }

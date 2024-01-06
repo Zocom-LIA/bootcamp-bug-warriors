@@ -5,7 +5,7 @@ import { addItem } from '@zocom/cart-actions';
 import { RootState } from '@zocom/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '@zocom/types';
-import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
+// import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
 import { TopBar } from '@zocom/top-bar';
 import { fetchMenu } from '@zocom/products';
@@ -49,22 +49,21 @@ export const Menu = () => {
     dispatch(addItem(item));
     setAnimate(true);
 
-    // const handleIncrease = (item: Product) => {
-    //   dispatch(increase(item));
-    // };
-    // const handleDecrease = (item: Product) => {
-    //   dispatch(decrease(item));
-    // };
+  // const handleIncrease = (item: Product) => {
+  //   dispatch(increase(item));
+  // };
+  // const handleDecrease = (item: Product) => {
+  //   dispatch(decrease(item));
+  // };
 
-    useEffect(() => {
-      if (animate) {
-        const timer = setTimeout(() => {
-          setAnimate(false);
-        }, 600);
-        return () => clearTimeout(timer);
-      }
-    }, [animate]);
-  };
+  // useEffect(() => {
+  //   if (animate) {
+  //     const timer = setTimeout(() => {
+  //       setAnimate(false);
+  //     }, 600);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [animate]);
 
   return (
     <Wrapper style={Styles.MAIN}>

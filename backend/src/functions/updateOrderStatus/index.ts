@@ -1,10 +1,12 @@
+import middy from "@middy/core";
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 import { updateOrderStatus } from "./updateOrderStatus";
 import { OrderStatus } from "src/types";
 import { createStandardResponse } from "src/utils/responses";
 import { HttpStatusCode } from "src/utils/httpCodes";
+import { validateUpdateOrderStatus } from "src/schema/updateOrderStatusSchema";
 
-export const handler = async (
+const baseHandler = async (
   event: APIGatewayProxyEventV2
 ): Promise<APIGatewayProxyResultV2> => {
   try {
@@ -35,3 +37,5 @@ export const handler = async (
     });
   }
 };
+
+export const handler = middy(baseHandler).use(validateUpdateOrderStatus());
