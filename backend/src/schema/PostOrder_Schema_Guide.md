@@ -44,7 +44,7 @@ Each object in the `dip` array should have the following structure:
         "lime",
         "koriander"
       ],
-      "preparationTime": 4
+      "preparationTime": 1.8
     },
     {
       "name": "Ho Chi Minh",
@@ -60,7 +60,7 @@ Each object in the `dip` array should have the following structure:
         "ingefära",
         "tofu"
       ],
-      "preparationTime": 4
+      "preparationTime": 2.1
     }
   ],
   "dip": [

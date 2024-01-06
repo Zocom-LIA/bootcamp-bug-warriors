@@ -141,3 +141,35 @@ export type QueryParams = {
   };
   ProjectionExpression: string;
 };
+
+export type QueryUserParams = {
+  TableName: string;
+  IndexName: string;
+  KeyConditionExpression: string;
+  ExpressionAttributeValues: {
+    ":username": { S: string };
+  };
+};
+
+export type PutUserParams = {
+  TableName: string;
+  Item: {
+    PK: { S: string };
+    SK: { S: string };
+    username: { S: AdminDetails["username"] };
+    password: { S: string }; // Hash the password before storing
+    email: { S: AdminDetails["email"] };
+  };
+};
+
+/* Admin types */
+
+export interface AdminDetails {
+  username: string;
+  password: string;
+  email: string;
+}
+
+export interface DatabaseResponse {
+  message: string;
+}

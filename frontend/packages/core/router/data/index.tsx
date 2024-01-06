@@ -4,7 +4,7 @@ import {
   } from "react-router-dom";
   
   import { Menu } from "@zocom/menu";
-  // import { CartPage } from "@zocom/cart-page";
+  import { Cart } from "@zocom/cart";
   // import { DashboardPage } from "@zocom/dashboard-page";
   // import { OrderStatusPage } from "@zocom/orderStatus-page";
   // import { ReciptPage } from "@zocom/recipt-page";
@@ -14,10 +14,10 @@ import {
       path: "/",
       element: <Menu />,
     },
-    // {
-    //   path: "/cart",
-    //   element: <CartPage />,
-    // },
+    {
+      path: "/cart",
+      element: <Cart />,
+    },
     // {
     //   path: "/status",
     //   element: <OrderStatusPage />,
