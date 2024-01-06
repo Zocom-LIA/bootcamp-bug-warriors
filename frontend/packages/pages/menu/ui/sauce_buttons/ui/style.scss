@@ -3,18 +3,14 @@
 .sauce_buttons-container {
   @include row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
 }
 .sauce_button {
+  @include fontsizeSmall;
   background-color: $shade-24-light;
-  padding: 0rem, 0.75rem;
-  border-radius: 0.25rem;
-  width: 5.75rem;
-  height: 2rem;
+  border-radius: $radius-tier-2;
   color: $snow;
-  flex-basis: 25%;
-  font-size: 0.875rem;
+  padding: $padding-sml;
 }
 .sauce_button-active {
   background-color: $coal;
