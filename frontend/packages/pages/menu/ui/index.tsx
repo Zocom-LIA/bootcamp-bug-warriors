@@ -48,7 +48,7 @@ export const Menu = () => {
   const handleAddItem = (item: Product) => {
     dispatch(addItem(item));
     setAnimate(true);
-
+  };
   // const handleIncrease = (item: Product) => {
   //   dispatch(increase(item));
   // };
