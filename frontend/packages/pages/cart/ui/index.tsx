@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import './style.scss';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { CartItemsContainer } from '@zocom/cart-container';
@@ -10,58 +10,25 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@zocom/store';
 
 
-
-const menuItems = [
-  {
-    name: 'KARLSTAD',
-    
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'BANGKOK',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'OAXACA',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'PARIS',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  }
-];
-
-
 export const Cart = () => {
-  const cartState = useSelector((state: RootState) => state.cart.menuList);
-
+  const menuList = useSelector((state: RootState) => state.cart.menuList);
+  const combinedItems = [...menuList.wonton, ...menuList.dip];
 
   return (
         <Wrapper style={Styles.CART}>
           <TopBar />
             <CartItemsContainer>
 
-              {/* Display items placed in cart */}
-              {menuItems.map((item) => (
+              {combinedItems.map((item) => (
                 <CartItem
-                  menuItem={[item.name, item.price, item.ingredients?.join(', ')]}
+                  menuItem={item}
                 />
               ))}
             </CartItemsContainer>
 
-            {/* Display correct amount */}
-            <CartTotalPrice />
+            <CartTotalPrice wonton={menuList.wonton} dip={menuList.dip}/>
 
-            {/* on click -> send order */}
-            <Button type={ButtonType.REGULAR}>TAKE MY MONEY!</Button>
+            <Button onClick={() => {console.log("Take my money", combinedItems)}} type={ButtonType.REGULAR}>TAKE MY MONEY!</Button>
         </Wrapper>
   );
 };
