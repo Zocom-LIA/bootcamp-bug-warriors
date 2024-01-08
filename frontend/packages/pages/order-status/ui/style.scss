@@ -1,1 +1,9 @@
 @use '@zocom/styles' as *;
+
+.status__button-container {
+  @include center;
+  width: 90%;
+  margin: 0 auto;
+  gap: 1rem;
+  padding-top: 4rem;
+}
