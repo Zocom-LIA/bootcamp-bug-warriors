@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { CartItemsContainer } from '@zocom/cart-container';
-import { CartItem } from '@zocom/cart-item';
+import { CartItem } from './cart-item';
 import { TopBar } from '@zocom/top-bar';
 import { CartTotalPrice } from '@zocom/cart-total-price';
 import { Button, ButtonType } from '@zocom/button';
@@ -43,7 +43,7 @@ const menuItems = [
 export const Cart = () => {
   const cartState = useSelector((state: RootState) => state.cart.menuList);
 
-  
+
   return (
         <Wrapper style={Styles.CART}>
           <TopBar />
