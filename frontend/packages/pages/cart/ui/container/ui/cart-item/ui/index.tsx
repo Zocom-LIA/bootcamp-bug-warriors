@@ -16,9 +16,14 @@ export const CartItem = ({ menuItem }: CartItemProps) => {
       </section>
 
       <section className="item-box__amount"> 
-      <Button type={ButtonType.INCDEC}>+</Button>
+      {/* On click => add product */}
+        <Button type={ButtonType.INCDEC}>+</Button>
+
+        {/* display amount  */}
         <p>3 stycken</p>
-      <Button type={ButtonType.INCDEC}>-</Button>
+
+      {/* On click => remove product product */}
+        <Button type={ButtonType.INCDEC}>-</Button>
       </section>
 
     </article>

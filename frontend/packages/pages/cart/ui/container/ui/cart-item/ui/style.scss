@@ -25,14 +25,6 @@
     @include row;
     font-size: medium;
     align-items: center;
-    &__inc-dec {
-      height: 1.5rem;
-      width: 1.5rem;
-      border-radius: 50%;
-      margin: $margin-sml 0;
-      font-size: larger;
-      background-color: $shade-24-dark;
-    }
   }
 }
 
