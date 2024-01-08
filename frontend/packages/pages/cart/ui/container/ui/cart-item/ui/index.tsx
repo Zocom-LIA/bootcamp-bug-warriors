@@ -15,11 +15,12 @@ export const CartItem = ({ menuItem }: CartItemProps) => {
         <h2>&nbsp; {menuItem[1]} SEK</h2>
       </section>
 
-{/* TODO - replace with buttons */}
       <section className="item-box__amount"> 
-        <button>+</button>
+      {/* connect inc */}
+        <button className="item-box__amount__inc-dec">+</button> 
         <p>3 stycken</p>
-        <button>-</button>
+      {/* connect dec */}
+        <button className="item-box__amount__inc-dec">-</button>
       </section>
 
     </article>

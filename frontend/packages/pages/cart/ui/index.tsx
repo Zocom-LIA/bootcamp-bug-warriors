@@ -3,6 +3,10 @@ import './style.scss';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { CartItemsContainer } from '@zocom/cart-container';
 import { CartItem } from '@zocom/cart-item';
+import { TopBar } from '@zocom/top-bar';
+import { CartTotalPrice } from '@zocom/cart-total-price';
+import { Button, ButtonType } from '@zocom/button';
+
 
 const menuItems = [
   {
@@ -28,13 +32,14 @@ const menuItems = [
     desc: 'En god friterad wonton.',
     ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
     price: 9,
-  },
+  }
 ];
 
 export const Cart = () => {
 
   return (
         <Wrapper style={Styles.CART}>
+          <TopBar />
             <CartItemsContainer>
               {menuItems.map((item) => (
                 <CartItem
@@ -42,7 +47,8 @@ export const Cart = () => {
                 />
               ))}
             </CartItemsContainer>
-
+            <CartTotalPrice />
+            <Button type={ButtonType.REGULAR}>TAKE MY MONEY!</Button>
         </Wrapper>
   );
 };

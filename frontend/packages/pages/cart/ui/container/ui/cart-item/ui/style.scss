@@ -1,40 +1,3 @@
-// @use "@zocom/styles" as *;
-
-
-//   &__info {
-//     // @include row;
-//     // justify-content: space-between;
-//     // background: inherit;
-//     // position: relative;
-//     display: flex;
-//     justify-content: space-between;
-//     width: 100%;
-//     background: inherit;
-//     margin-bottom: 0.5rem;
-//     position: relative;
-//     ::before {
-//       content: '';
-//       position: absolute;
-//       bottom: 0.4rem;
-// width: 60%;
-//       border-bottom: 2px dotted $clay;
-//     }
-//     &__item {
-//       z-index: 1;
-//       background-color: $snow;
-//       width: auto;
-//     }
-//     &__price {
-//       z-index: 1;
-//       background-color: $snow;
-//     }
-//   }
-//   &__amount {
-//     @include row;
-//   }
-// }
-
-
 @use '@zocom/styles' as *;
 
 .item-box {
@@ -61,10 +24,17 @@
   &__amount {
     @include row;
     font-size: medium;
-
+    align-items: center;
+    &__inc-dec {
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      margin: $margin-sml 0;
+      font-size: larger;
+      background-color: $shade-24-dark;
+    }
   }
 }
-
 
 .item-box__info:before {
   content: '';
@@ -73,10 +43,3 @@
   width: 100%;
   border-bottom: 2px dotted $clay;
 }
-
-.item-box__info:last-child {
-  border: none;
-}
-
-
-
