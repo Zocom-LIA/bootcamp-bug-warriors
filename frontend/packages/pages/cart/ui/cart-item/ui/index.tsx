@@ -1,6 +1,6 @@
 import "./style.scss";
 import { ReactNode } from "react";
-// import React from "react";
+import { Button, ButtonType } from '@zocom/button';
 
 type CartItemProps = {
   menuItem: ReactNode[];
@@ -15,11 +15,15 @@ export const CartItem = ({ menuItem }: CartItemProps) => {
         <h2>&nbsp; {menuItem[1]} SEK</h2>
       </section>
 
-{/* TODO - replace with buttons */}
       <section className="item-box__amount"> 
-        <button>+</button>
+      {/* On click => add product */}
+        <Button type={ButtonType.INCDEC}>+</Button>
+
+        {/* display amount  */}
         <p>3 stycken</p>
-        <button>-</button>
+
+      {/* On click => remove product product */}
+        <Button type={ButtonType.INCDEC}>-</Button>
       </section>
 
     </article>

@@ -1,0 +1,25 @@
+@use '@zocom/styles' as *;
+
+.status-text {
+  @include fontsizeLarge;
+  color: $snow;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.status-eta {
+  @include fontsizeRegular;
+  color: $snow;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.status-order {
+  @include fontsizeSmall;
+  color: $snow;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}

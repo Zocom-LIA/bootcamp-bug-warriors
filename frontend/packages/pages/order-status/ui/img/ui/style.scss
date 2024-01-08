@@ -1,0 +1,6 @@
+@use '@zocom/styles' as *;
+
+.status__image-container {
+  @include center;
+  background-color: $clay;
+}
