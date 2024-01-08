@@ -1,6 +1,6 @@
 import "./style.scss";
 import { ReactNode } from "react";
-// import React from "react";
+import { Button, ButtonType } from '@zocom/button';
 
 type CartItemProps = {
   menuItem: ReactNode[];
@@ -16,11 +16,9 @@ export const CartItem = ({ menuItem }: CartItemProps) => {
       </section>
 
       <section className="item-box__amount"> 
-      {/* connect inc */}
-        <button className="item-box__amount__inc-dec">+</button> 
+      <Button type={ButtonType.INCDEC}>+</Button>
         <p>3 stycken</p>
-      {/* connect dec */}
-        <button className="item-box__amount__inc-dec">-</button>
+      <Button type={ButtonType.INCDEC}>-</Button>
       </section>
 
     </article>
