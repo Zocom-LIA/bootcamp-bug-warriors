@@ -1,5 +1,5 @@
 import "./style.scss";
-import { ReactNode } from "react";
+// import { ReactNode } from "react";
 import React from "react";
 import { Product } from "@zocom/types";
 
