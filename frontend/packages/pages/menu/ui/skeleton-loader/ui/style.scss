@@ -1,0 +1,21 @@
+@use '@zocom/styles' as *;
+
+.skeleton-loader {
+  display: flex;
+  width: 100%;
+  & .menu-item {
+    width: 100%;
+    background-color: $skeleton-loader-bg-color;
+  }
+  min-height: 7rem;
+  animation: pulse 1.25s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    filter: contrast(100%);
+  }
+  100% {
+    filter: contrast(90%);
+  }
+}

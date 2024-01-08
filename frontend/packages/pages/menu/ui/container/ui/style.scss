@@ -1,0 +1,23 @@
+@use '@zocom/styles' as *;
+
+//TODO: move to seperate component
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding;
+}
+
+.menu-container {
+  @include center;
+  justify-content: flex-start;
+  background-color: $clay;
+  margin: $margin;
+  height: 43.0625rem;
+}
+
+.menu-heading {
+  @include fontsizeVeryLarge;
+  align-self: flex-start;
+  color: $snow;
+  padding: $padding;
+}
