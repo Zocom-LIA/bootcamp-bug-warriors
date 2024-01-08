@@ -5,54 +5,45 @@ import { addItem } from '@zocom/cart-actions';
 import { RootState } from '@zocom/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product } from '@zocom/types';
-import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
+// import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
-import { SauceButtons } from '@zocom/sauce-buttons';
-import { MenuButton } from '@zocom/menu-button';
-
-//TODO: Get from backend
-const sauceList = [
-  'sweet chili',
-  'sweet and sour',
-  'guacamole',
-  'wonton sd',
-  'hot mango',
-  'chili mayo',
-];
-
-const menuItems = [
-  {
-    name: 'Karlstad',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'Bangkok',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'Oaxaca',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'Paris',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-];
+import { TopBar } from '@zocom/top-bar';
+import { fetchMenu } from '@zocom/products';
+import { WontonItemComponent } from '@zocom/wontons';
+import { DipItemComponent } from '@zocom/dips';
+import { MenuList, DipItem } from '@zocom/types';
 
 export const Menu = () => {
+  const [menu, setMenu] = useState<MenuList | null>(null);
   const [animate, setAnimate] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart?.items);
-  const [selectedSauces, setSelectedSauces] = useState<string[]>([]);
-  console.log(cartItems);
+  const [selectedDip, setSelectedDips] = useState<string[]>([]);
   const dispatch = useDispatch();
+  const dipList = menu?.dip?.map((item) => item.name);
+  const fullDipList: DipItem[] = menu ? menu?.dip?.map((item) => item) : [];
+
+  useEffect(() => {
+    fetchMenu()
+      .then(setMenu)
+      .catch((error) => console.error('Error fetching menu:', error));
+  }, []);
+
+  if (!menu) {
+    return <div>Loading.....</div>;
+  }
+
+  const handleSelectDip = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const button = event.currentTarget;
+
+    button.classList.toggle('sauce_button-active');
+    if (selectedDip.includes(button.textContent!)) {
+      setSelectedDips(
+        selectedDip.filter((sauce) => sauce !== button.textContent!)
+      );
+    } else {
+      setSelectedDips([...selectedDip, button.textContent!]);
+    }
+  };
 
   const handleAddItem = (item: Product) => {
     dispatch(addItem(item));
@@ -65,43 +56,32 @@ export const Menu = () => {
   //   dispatch(decrease(item));
   // };
 
-  useEffect(() => {
-    if (animate) {
-      // Remove the animation class after it completes
-      const timer = setTimeout(() => {
-        setAnimate(false);
-      }, 600); // This should match the duration of your animation
-      return () => clearTimeout(timer);
-    }
-  }, [animate]);
+  // useEffect(() => {
+  //   if (animate) {
+  //     const timer = setTimeout(() => {
+  //       setAnimate(false);
+  //     }, 600);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [animate]);
 
   return (
     <Wrapper style={Styles.MAIN}>
+      <TopBar />
       <MenuItemsContainer>
-        <CartButton
-          style={CartButtonStyles.MENU}
-          animate={animate ? Animation.ANIMATE : Animation.NONE}
-        ></CartButton>
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[0])}
-        />
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[1])}
-        />
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[2])}
-        />
-        <MenuButton
-          menuItem={['WONTON', '9 sek', 'persilja']}
-          onClick={() => handleAddItem(menuItems[3])}
-        />
-        <SauceButtons
-          sauceList={sauceList}
-          setSelectedSauces={setSelectedSauces}
-          selectedSauces={selectedSauces}
+        <h1 className='menu-heading'>MENY</h1>
+        {menu.wonton.map((item, index) => (
+          <WontonItemComponent
+            key={index}
+            item={item}
+            handleAddItem={handleAddItem}
+          />
+        ))}
+        <DipItemComponent
+          item={fullDipList}
+          sauceList={dipList}
+          onclick={handleSelectDip}
+          selectedDip={selectedDip}
         />
       </MenuItemsContainer>
     </Wrapper>

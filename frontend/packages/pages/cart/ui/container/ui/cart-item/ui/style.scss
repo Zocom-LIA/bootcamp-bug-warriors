@@ -1,0 +1,82 @@
+// @use "@zocom/styles" as *;
+
+
+//   &__info {
+//     // @include row;
+//     // justify-content: space-between;
+//     // background: inherit;
+//     // position: relative;
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//     background: inherit;
+//     margin-bottom: 0.5rem;
+//     position: relative;
+//     ::before {
+//       content: '';
+//       position: absolute;
+//       bottom: 0.4rem;
+// width: 60%;
+//       border-bottom: 2px dotted $clay;
+//     }
+//     &__item {
+//       z-index: 1;
+//       background-color: $snow;
+//       width: auto;
+//     }
+//     &__price {
+//       z-index: 1;
+//       background-color: $snow;
+//     }
+//   }
+//   &__amount {
+//     @include row;
+//   }
+// }
+
+
+@use '@zocom/styles' as *;
+
+.item-box {
+  width: 100%;
+  background-color: $ash;
+  color: $coal;
+  border-bottom: 1px dashed $shade-24-dark;
+  margin: $baseline;
+
+  &__info {
+    @include row;
+    justify-content: space-between;
+    width: 100%;
+    background: inherit;
+    position: relative;
+    h2 {
+      @include fontsizeLarge;
+      font-weight: bold;
+      z-index: 1;
+      background-color: inherit;
+    }
+  }
+
+  &__amount {
+    @include row;
+    font-size: medium;
+
+  }
+}
+
+
+.item-box__info:before {
+  content: '';
+  position: absolute;
+  bottom: 0.4rem;
+  width: 100%;
+  border-bottom: 2px dotted $clay;
+}
+
+.item-box__info:last-child {
+  border: none;
+}
+
+
+

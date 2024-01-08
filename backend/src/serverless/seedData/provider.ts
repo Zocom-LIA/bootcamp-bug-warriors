@@ -6,9 +6,12 @@ const providerConfig = {
   iam: {
     role: process.env.AWS_IAM_ROLE,
   },
+  httpApi: {
+    cors: true,
+  },
   deploymentMethod: 'direct',
   environment: {
-    YUM_YUM_TABLE: process.env.YUM_YUM_TABLE,
+    YUM_YUM_TABLE: "Yum-Yum-table",
   },
 } as const;
 
