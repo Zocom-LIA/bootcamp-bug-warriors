@@ -1,0 +1,16 @@
+@use "@zocom/styles" as *;
+
+//TODO: move to seperate component
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding;
+}
+
+.dashboard-container {
+  @include center;
+  justify-content: flex-start;
+  background-color: $coal;
+  margin: $margin;
+  flex-direction: row;
+}
