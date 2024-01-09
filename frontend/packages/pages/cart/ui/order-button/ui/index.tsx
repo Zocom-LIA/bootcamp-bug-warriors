@@ -4,58 +4,50 @@ import { StyleTypes } from "@zocom/types";
 import React from "react";
 import { Button, ButtonType } from "@zocom/button";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "@zocom/store";
+import { useSelector } from "react-redux";
+import { MenuList } from "@zocom/types";
 
-/* Component Props */
-type OrderButtonProps = {
-  onClick: () => void;
-};
 
-interface StandardResponse {
-  statusCode: number;
-  headers: { [key: string]: string };
-  body: string;
+interface Response {
+  message: string;
+  orderId? : string;
 }
 
-async function sendOrder(url: string): Promise<StandardResponse> {
-  const repsone = await fetch(url, {
+async function sendOrder(url: string, order: MenuList): Promise<Response> {
+
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({}), //put data here
+    body: JSON.stringify(order), //put data here
   });
 
-  //Temp
-  return {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ message: "OK" }),
-  };
-}
-
-async function postOrder() {
-  const response = await sendOrder("");
-
-  if (response.statusCode === 500) {
-    //exit function of throw error
+  if(response.status === 500) {
+    //Error
   }
 
-  //Save orderId to redux or send with navigate?
-
-  //Navigate to next page when dpne (If successful?)
-  const navigate = useNavigate();
-  navigate("/status");
+  return await response.json();
 }
 
-/* Component */
-export const OrderButton = ({ onClick }: OrderButtonProps) => {
+export const OrderButton = () => {
+  const cartState = useSelector((state: RootState) => state.cart.menuList);
+  const navigate = useNavigate();
+
+  async function handleClick() {
+
+    const response = await sendOrder("https://bw2ge5zsh6.execute-api.eu-north-1.amazonaws.com/order", cartState);
+    
+    const orderId = response.orderId;
+    
+    //Navigate to next page when done (If successful?)
+    navigate("/cart", { state: orderId });
+  }
+
   return (
-    <div className={`menu-button`} onClick={() => onClick()}>
-      <Button type={ButtonType.REGULAR} onClick={() => postOrder()}>
+      <Button type={ButtonType.REGULAR} onClick={() => handleClick()}>
         TAKE MY MONEY
       </Button>
-    </div>
   );
 };
