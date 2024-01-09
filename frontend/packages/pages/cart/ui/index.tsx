@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import './style.scss';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { CartItemsContainer } from '@zocom/cart-container';
@@ -9,59 +9,23 @@ import { Button, ButtonType } from '@zocom/button';
 import { useSelector } from 'react-redux';
 import { RootState } from '@zocom/store';
 
-
-
-const menuItems = [
-  {
-    name: 'KARLSTAD',
-    
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'BANGKOK',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'OAXACA',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  },
-  {
-    name: 'PARIS',
-    desc: 'En god friterad wonton.',
-    ingredients: ['kantarell', 'scharlottenlök', 'morot', 'bladpersilja'],
-    price: 9,
-  }
-];
-
-
 export const Cart = () => {
-  const cartState = useSelector((state: RootState) => state.cart.menuList);
-
+  const menuList = useSelector((state: RootState) => state.cart.menuList);
+  const combinedItems = [...menuList.wonton, ...menuList.dip];
 
   return (
         <Wrapper style={Styles.CART}>
           <TopBar />
-            <CartItemsContainer>
-
-              {/* Display items placed in cart */}
-              {menuItems.map((item) => (
-                <CartItem
-                  menuItem={[item.name, item.price, item.ingredients?.join(', ')]}
-                />
-              ))}
-            </CartItemsContainer>
-
-            {/* Display correct amount */}
-            <CartTotalPrice />
-
-            {/* on click -> send order */}
-            <Button type={ButtonType.REGULAR}>TAKE MY MONEY!</Button>
+          <CartItemsContainer>
+            {combinedItems.map((item, i) => (
+              <CartItem
+                key={i}
+                menuItem={item}
+              />
+            ))}
+          </CartItemsContainer>
+          <CartTotalPrice wonton={menuList.wonton} dip={menuList.dip}/>
+          <Button onClick={() => {console.log("Take my money", combinedItems)}} type={ButtonType.REGULAR}>TAKE MY MONEY!</Button>
         </Wrapper>
   );
 };
