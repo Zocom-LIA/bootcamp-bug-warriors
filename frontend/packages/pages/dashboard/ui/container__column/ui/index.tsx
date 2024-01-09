@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import "./style.scss";
 import React from "react";
 
-enum Status {
+export enum Status {
   Preparing = "PREPARING",
   Ready = "READY",
 }
@@ -13,13 +13,11 @@ type DashboardColumnProps = {
 };
 
 export function DashboardColumn({ children, status }: DashboardColumnProps) {
-  const headerText = status === Status.Preparing ? "ONGOING" : "DONE";
-
   return (
     <main className="dashboard-column">
       <div>
-        <div>{headerText}</div>
-        <div className='.line'></div>
+        <div>{status}</div>
+        <span className='.line'></span>
       </div>
       {children}
     </main>
