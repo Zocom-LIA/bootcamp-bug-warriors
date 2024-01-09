@@ -42,7 +42,7 @@ export const OrderButton = () => {
     const orderId = response.orderId;
     
     //Navigate to next page when done (If successful?)
-    navigate("/cart", { state: orderId });
+    navigate("/status", { state: orderId });
   }
 
   return (
