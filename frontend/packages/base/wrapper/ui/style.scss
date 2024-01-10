@@ -41,9 +41,12 @@
 }
 
 .wrapper-tablet {
-  @include center;
+  display: flex;
+  flex-direction: column;
+  padding: $padding-sml;
   height: $wrapper-tablet-height;
   width: $wrapper-tablet-width;
+  background-color: $coal;
 }
 
 .wrapper-cart {

@@ -1,10 +1,9 @@
 @use "@zocom/styles" as *;
 
 .dashboard-container {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
-  background-color: $coal;
-  margin: $margin;
   flex-direction: row;
   align-items: flex-start;
   color: $snow;
