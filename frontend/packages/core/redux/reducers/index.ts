@@ -1,4 +1,4 @@
-import { MenuList, WontonItem, DipItem } from "@zocom/types";
+import { MenuList, WontonItem, DipItem } from '@zocom/types';
 
 interface CartState {
   menuList: MenuList;
@@ -17,7 +17,7 @@ interface Action {
   type: string;
   payload: {
     item: MenuItemType;
-    itemType: "wonton" | "dip";
+    itemType: 'wonton' | 'dip';
   };
 }
 
@@ -26,7 +26,7 @@ export default function cartReducer(
   action: Action
 ): CartState {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case 'ADD_TO_CART':
       if (action.payload) {
         const { item, itemType } = action.payload;
         const existingItems = state.menuList[itemType];
@@ -59,7 +59,7 @@ export default function cartReducer(
       }
       return state;
 
-    case "INCREASE":
+    case 'INCREASE':
       if (action.payload) {
         const { item, itemType } = action.payload;
         const items = state.menuList[itemType];
@@ -80,7 +80,7 @@ export default function cartReducer(
       }
       return state;
 
-    case "DECREASE":
+    case 'DECREASE':
       if (action.payload) {
         const { item, itemType } = action.payload;
         const items = state.menuList[itemType];
@@ -115,6 +115,16 @@ export default function cartReducer(
           }
         }
       }
+      return state;
+
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        menuList: {
+          wonton: [],
+          dip: [],
+        },
+      };
       return state;
 
     default:

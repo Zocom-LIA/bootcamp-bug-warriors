@@ -1,9 +1,7 @@
 import './style.scss';
-import React from 'react';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { TopBar } from '@zocom/top-bar';
 import { ReceiptCard } from '@zocom/receipt-card';
-import { logo } from '@zocom/receipt-card';
 import { Button } from '@zocom/button';
 import { useNavigate } from 'react-router-dom';
 

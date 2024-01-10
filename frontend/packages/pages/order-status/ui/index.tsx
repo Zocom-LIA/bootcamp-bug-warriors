@@ -1,4 +1,3 @@
-import React from 'react';
 import './style.scss';
 import { img } from '@zocom/status-img';
 import { Status } from '@zocom/status';
@@ -6,11 +5,32 @@ import { TopBar } from '@zocom/top-bar';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { ButtonType, Button } from '@zocom/button';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+function notifyMe() {
+  if (!('Notification' in window)) {
+    alert('This browser does not support desktop notification');
+  } else if (Notification.permission === 'granted') {
+    const notification = new Notification('Din order är redo!');
+    // …
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        const notification = new Notification('Din order är redo!');
+        // …
+      }
+    });
+  }
+}
 
 export const OrderStatusPage = () => {
-  const eta = 1; //TODO get from backend
+  const orderId = useLocation().state;
   const navigate = useNavigate();
+  const orderItem = localStorage.getItem(orderId);
+  let eta = 0;
+  if (orderItem) {
+    eta = JSON.parse(orderItem).eta;
+  }
   const [timeLeftInMinutes, setTimeLeftInMinutes] = useState(eta);
   const [orderReady, setOrderReady] = useState(false);
 
@@ -19,6 +39,7 @@ export const OrderStatusPage = () => {
       if (timeLeftInMinutes > 1) {
         setTimeLeftInMinutes(timeLeftInMinutes - 1);
       } else {
+        notifyMe();
         setOrderReady(true);
       }
     }, 60000);
@@ -31,14 +52,17 @@ export const OrderStatusPage = () => {
       <img src={img} />
       <Status
         eta={timeLeftInMinutes}
-        orderNr='232edd2'
+        orderNr={`#${orderId}`}
         orderReady={orderReady}
       />
       <div className='status__button-container'>
         <Button type={ButtonType.REGULAR} onClick={() => navigate('/')}>
           BESTÄLL MER
         </Button>
-        <Button type={ButtonType.INVERTED} onClick={() => navigate('/receipt')}>
+        <Button
+          type={ButtonType.INVERTED}
+          onClick={() => navigate('/receipt', { state: orderItem })}
+        >
           SE KVITTO
         </Button>
       </div>

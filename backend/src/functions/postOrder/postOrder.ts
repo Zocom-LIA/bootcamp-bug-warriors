@@ -2,10 +2,10 @@ import {
   AttributeValue,
   DynamoDBClient,
   PutItemCommand,
-} from "@aws-sdk/client-dynamodb";
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
-import { nanoid } from "nanoid";
-import { dynamoDbConfig } from "src/database/core/dbConfig";
+} from '@aws-sdk/client-dynamodb';
+import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
+import { nanoid } from 'nanoid';
+import { dynamoDbConfig } from 'src/database/core/dbConfig';
 import {
   DipItem,
   DynamoDBOrder,
@@ -13,10 +13,12 @@ import {
   OrderData,
   OrderStatus,
   WontonItem,
-} from "src/types";
-import { HttpStatusCode } from "src/utils/httpCodes";
-import { createStandardResponse } from "src/utils/responses";
-import { calculateETA } from "./calculateETA";
+  ClientOrder,
+  ClientItems,
+} from 'src/types';
+import { HttpStatusCode } from 'src/utils/httpCodes';
+import { createStandardResponse } from 'src/utils/responses';
+import { calculateETA } from './calculateETA';
 
 const client = new DynamoDBClient(dynamoDbConfig);
 
@@ -28,7 +30,7 @@ export const postOrder = async (
     const orderId = nanoid();
     const customerId = nanoid();
     const formatDate = (date: Date) => {
-      const pad = (num: number) => num.toString().padStart(2, "0");
+      const pad = (num: number) => num.toString().padStart(2, '0');
       return (
         `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
           date.getDate()
@@ -41,6 +43,7 @@ export const postOrder = async (
 
     let totalPrice = 0;
     const itemsForOrder: AttributeValue[] = [];
+    const clientItems: ClientItems[] = [];
     const etaItems: IDynamoDBOrderItem[] = [];
     // Handle as a WontonItem
     if (orderData.wonton) {
@@ -57,6 +60,17 @@ export const postOrder = async (
           ingredients: { L: wontonItem.ingredients.map((ing) => ({ S: ing })) },
           preparationTime: { N: wontonItem.preparationTime.toString() },
         };
+
+        const clientOrderItem: ClientItems = {
+          name: wontonItem.name,
+          desc: wontonItem.desc,
+          price: wontonItem.price.toString(),
+          quantity: wontonItem.quantity.toString(),
+          ingredients: wontonItem.ingredients,
+          preparationTime: wontonItem.preparationTime.toString(),
+        };
+
+        clientItems.push(clientOrderItem);
         itemsForOrder.push({ M: dynamoDBOrderItem });
         etaItems.push(dynamoDBOrderItem);
       }
@@ -75,13 +89,21 @@ export const postOrder = async (
           price: { N: dipItem.price.toString() },
           quantity: { N: dipItem.quantity.toString() },
         };
+
+        const clientOrderItem: ClientItems = {
+          name: dipItem.name,
+          desc: dipItem.desc,
+          price: dipItem.price.toString(),
+          quantity: dipItem.quantity.toString(),
+        };
+        clientItems.push(clientOrderItem);
         itemsForOrder.push({ M: dynamoDBOrderItem });
       }
     }
 
     const eta = await calculateETA(etaItems);
     const orderItem: DynamoDBOrder = {
-      PK: { S: "Order" },
+      PK: { S: 'Order' },
       SK: { S: `Order#${orderId}` },
       customerId: { S: `Customer#${customerId}` },
       status: { S: OrderStatus.Pending }, // Default status
@@ -89,6 +111,16 @@ export const postOrder = async (
       orderTime: { S: formatDate(new Date()) },
       eta: { S: eta },
       totalPrice: { N: totalPrice.toString() },
+    };
+
+    const clientOrderItem: ClientOrder = {
+      orderId: orderId,
+      customerId: customerId,
+      status: OrderStatus.Pending,
+      items: clientItems,
+      orderTime: formatDate(new Date()),
+      eta: eta,
+      totalPrice: totalPrice.toString(),
     };
 
     await client.send(
@@ -99,13 +131,13 @@ export const postOrder = async (
     );
 
     return createStandardResponse(HttpStatusCode.OK, {
-      message: "Order created successfully",
-      orderId: orderId,
+      message: 'Order created successfully',
+      orderItem: clientOrderItem,
     });
   } catch (error) {
-    console.error("Error posting order:", error);
+    console.error('Error posting order:', error);
     return createStandardResponse(HttpStatusCode.INTERNAL_SERVER_ERROR, {
-      message: "Error posting order",
+      message: 'Error posting order',
     });
   }
 };

@@ -1,6 +1,6 @@
-import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
-import { IDynamoDBOrderItem, OrderStatus, QueryParams } from "src/types";
-import { dynamoDbConfig } from "src/database/core/dbConfig";
+import { DynamoDBClient, QueryCommand } from '@aws-sdk/client-dynamodb';
+import { IDynamoDBOrderItem, OrderStatus, QueryParams } from 'src/types';
+import { dynamoDbConfig } from 'src/database/core/dbConfig';
 
 const client = new DynamoDBClient(dynamoDbConfig);
 
@@ -14,30 +14,30 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
       IndexName: "StatusIndex",
       KeyConditionExpression: "#status = :statusVal",
       ExpressionAttributeNames: {
-        "#status": "status",
-        "#items": "items",
-        "#orderTime": "orderTime",
+        '#status': 'status',
+        '#items': 'items',
+        '#orderTime': 'orderTime',
       },
       ExpressionAttributeValues: {
-        ":statusVal": { S: OrderStatus.Pending },
+        ':statusVal': { S: OrderStatus.Pending },
       },
-      ProjectionExpression: "#items, #orderTime, #status",
+      ProjectionExpression: '#items, #orderTime, #status',
     };
 
     const data = await client.send(new QueryCommand(params));
 
     if (data.Items) {
       data.Items.forEach((order) => {
-        console.log("data.Items", data.Items);
+        console.log('data.Items', data.Items);
         const items = order.items;
-        console.log("items", items);
+        console.log('items', items);
         const orderTimeAttr = order.orderTime;
         const orderStatusAttr = order.status;
 
         console.log(
-          "orderTimeAttr",
+          'orderTimeAttr',
           orderTimeAttr,
-          "orderStatusAttr",
+          'orderStatusAttr',
           orderStatusAttr
         );
         if (
@@ -76,7 +76,7 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
     console.log(totalLoadTime);
     return totalLoadTime;
   } catch (error) {
-    console.error("Error calculating kitchen load:", error);
+    console.error('Error calculating kitchen load:', error);
     return 0;
   }
 };
@@ -94,7 +94,7 @@ export const calculateETA = async (
   const currentKitchenLoad = await calculateCurrentKitchenLoad();
   const totalETA = totalPreparationTime + currentKitchenLoad;
   const minutes = Math.floor(totalETA);
-  const seconds = Math.floor((totalETA - minutes) * 60);
+  // const seconds = Math.floor((totalETA - minutes) * 60);
 
-  return `${minutes}:${seconds}`;
+  return `${minutes}`;
 };
