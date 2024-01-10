@@ -1,0 +1,125 @@
+@use '@zocom/styles' as *;
+
+.receipt-card {
+  background-color: $ash;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: $radius-tier-2;
+  overflow-y: auto;
+}
+
+.receipt-card__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding;
+  height: 89%;
+}
+
+.receipt-card__logo {
+  padding: $padding-large;
+}
+
+.receipt-card__heading1 {
+  @include fontsizeLarge;
+  color: $coal;
+}
+
+.receipt-card__heading2 {
+  @include fontsizeSmall;
+  color: $clay;
+}
+
+.receipt-card__order {
+  display: flex;
+  align-items: flex-start;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.receipt-card__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-card__item-name {
+  @include fontsizeRegular;
+  color: $coal;
+}
+
+.receipt-card__item-quantity {
+  @include fontsizeSmall;
+  color: $coal;
+  font-weight: 200;
+}
+
+.receipt-card__tax {
+  @include fontsizeSmall;
+  font-weight: 200;
+  color: $clay;
+}
+
+.receipt-card__item-price {
+  color: $coal;
+}
+.receipt-card__item-price::after {
+  content: ' SEK';
+}
+
+.receipt-card__total {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: $shade-24-dark;
+  width: 100%;
+  padding: $padding;
+  margin-top: $margin;
+}
+
+.receipt-card__total-price {
+  @include fontsizeLarge;
+  color: $coal;
+  align-self: center;
+}
+.receipt-card__total-price::after {
+  content: ' SEK';
+}
+
+.receipt-item {
+  width: 100%;
+  background-color: $ash;
+  color: $coal;
+  // padding: $padding;
+  padding-left: $padding;
+  padding-right: $padding;
+  padding-top: $padding;
+  &__info {
+    @include row;
+    justify-content: space-between;
+    width: 100%;
+    background: inherit;
+    position: relative;
+    span {
+      @include fontsizeRegular;
+      z-index: 1;
+      background-color: inherit;
+    }
+  }
+  &__amount {
+    @include fontsizeSmall;
+    font-weight: 400;
+    color: $clay;
+  }
+}
+
+.receipt-item__info:before {
+  content: '';
+  position: absolute;
+  bottom: 0.4rem;
+  width: 100%;
+  border-bottom: 2px dotted $clay;
+}

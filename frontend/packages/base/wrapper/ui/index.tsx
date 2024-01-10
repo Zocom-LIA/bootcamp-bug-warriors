@@ -8,6 +8,7 @@ export enum Styles {
   'CART' = 'cart',
   'ETA' = 'eta',
   'DONE' = 'done',
+  'RECEIPT' = 'receipt',
 }
 
 export type WrapperProps = {

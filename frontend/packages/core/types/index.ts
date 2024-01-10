@@ -37,7 +37,7 @@ export interface WontonItem {
 }
 
 export interface DipItem {
-  index: number;
+  //index: number;
   name: string;
   desc: string;
   price: number;

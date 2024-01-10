@@ -11,6 +11,7 @@ export enum ButtonType {
   "INVERTED" = "inverted",
   "READY" = "ready",
   "SERVED" = "served",
+  "INCDEC" = "incdec",
 }
 
 /* Component Props */

@@ -32,6 +32,14 @@
   margin: $margin-center;
 }
 
+.wrapper-receipt {
+  @include centerElement;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $clay;
+  margin: $margin-center;
+}
+
 .wrapper-tablet {
   @include center;
   height: $wrapper-tablet-height;

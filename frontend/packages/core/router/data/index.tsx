@@ -4,7 +4,7 @@ import { Menu } from '@zocom/menu';
 import { Cart } from '@zocom/cart';
 // import { DashboardPage } from "@zocom/dashboard-page";
 import { OrderStatusPage } from '@zocom/order-status-page';
-// import { ReciptPage } from "@zocom/recipt-page";
+import { ReceiptPage } from '@zocom/receipt-page';
 
 const router = createBrowserRouter([
   {
@@ -23,10 +23,10 @@ const router = createBrowserRouter([
   //   path: "/dashboard",
   //   element: <DashboardPage />,
   // },
-  // {
-  //   path: "/recipt",
-  //   element: <ReciptPage />,
-  // },
+  {
+    path: '/receipt',
+    element: <ReceiptPage />,
+  },
   {
     path: '*',
     element: <p>Page Not Found</p>,
