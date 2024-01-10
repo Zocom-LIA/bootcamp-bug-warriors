@@ -1,6 +1,7 @@
 import './style.scss';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { DashboardContainer } from '@zocom/dashboard-container';
+import { KitchenCard, OrderStatus } from '@zocom/kitchen-card';
 import { DashboardColumn, Status } from '@zocom/dashboard-container__column';
 import { TopBar } from '@zocom/top-bar';
 
@@ -14,10 +15,12 @@ export const DashboardPage = () => {
       </section>
         <DashboardContainer>
             <DashboardColumn status={Status.Ongoing}>
-                <p>kort</p>
+                <KitchenCard 
+                style={OrderStatus.READY} />
             </DashboardColumn>
             <DashboardColumn status={Status.Done}>
-                <p>kort</p>
+              <KitchenCard 
+              style={OrderStatus.SERVED} />
             </DashboardColumn>
         </DashboardContainer>
     </Wrapper>
