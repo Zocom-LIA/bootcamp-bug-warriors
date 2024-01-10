@@ -1,0 +1,11 @@
+@use '@zocom/styles' as *;
+
+.dashboard-timer {
+  @include center;
+  @include fontsizeRegular;
+  border-radius: $radius-tier-2;
+  padding: $padding-sml;
+  color: $coal;
+  background-color: $shade-24-dark;
+  width: 100%;
+}
