@@ -10,9 +10,9 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
     const currentTime = new Date().getTime();
 
     const params: QueryParams = {
-      TableName: 'Yum-Yum-table',
-      IndexName: 'StatusIndex',
-      KeyConditionExpression: '#status = :statusVal',
+      TableName: process.env.YUM_YUM_TABLE,
+      IndexName: "StatusIndex",
+      KeyConditionExpression: "#status = :statusVal",
       ExpressionAttributeNames: {
         '#status': 'status',
         '#items': 'items',
