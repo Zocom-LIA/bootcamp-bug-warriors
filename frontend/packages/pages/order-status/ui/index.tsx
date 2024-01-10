@@ -1,4 +1,3 @@
-import React from 'react';
 import './style.scss';
 import { img } from '@zocom/status-img';
 import { Status } from '@zocom/status';
@@ -17,7 +16,6 @@ export const OrderStatusPage = () => {
     eta = JSON.parse(orderItem).eta;
   }
   const [timeLeftInMinutes, setTimeLeftInMinutes] = useState(eta);
-
   const [orderReady, setOrderReady] = useState(false);
 
   useEffect(() => {
@@ -44,7 +42,10 @@ export const OrderStatusPage = () => {
         <Button type={ButtonType.REGULAR} onClick={() => navigate('/')}>
           BESTÄLL MER
         </Button>
-        <Button type={ButtonType.INVERTED} onClick={() => navigate('/receipt')}>
+        <Button
+          type={ButtonType.INVERTED}
+          onClick={() => navigate('/receipt', { state: orderItem })}
+        >
           SE KVITTO
         </Button>
       </div>
