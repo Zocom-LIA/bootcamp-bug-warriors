@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import "./style.scss";
-import React from "react";
 
 export enum Status {
   Ongoing = "ONGOING",

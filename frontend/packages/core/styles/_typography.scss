@@ -5,6 +5,11 @@
 
 $base: 16px;
 
+@mixin fontsizeExtraLarge {
+  font-size: calc($base * 2.5);
+  line-height: 120%;
+}
+
 @mixin fontsizeVeryLarge {
     font-size: calc($base * 2);
     line-height: 120%;
