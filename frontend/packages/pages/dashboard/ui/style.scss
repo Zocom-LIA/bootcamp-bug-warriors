@@ -1,0 +1,8 @@
+@use "@zocom/styles" as *;
+
+.dashboard-top{
+    display: flex;
+    align-items: center;
+    color: $snow;
+    @include fontsizeExtraLarge;
+}
