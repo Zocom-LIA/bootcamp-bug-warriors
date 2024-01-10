@@ -1,53 +1,36 @@
-import "./style.scss";
-import { ReactNode } from "react";
-import { StyleTypes } from "@zocom/types";
-import React from "react";
-import { Button, ButtonType } from "@zocom/button";
-import { useNavigate } from "react-router-dom";
-import { RootState } from "@zocom/store";
-import { useSelector } from "react-redux";
-import { MenuList } from "@zocom/types";
-
-
-interface Response {
-  message: string;
-  orderId? : string;
-}
-
-async function sendOrder(url: string, order: MenuList): Promise<Response> {
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(order), //put data here
-  });
-
-  if(response.status === 500) {
-    //Error
-  }
-
-  return await response.json();
-}
+import './style.scss';
+import { Button, ButtonType } from '@zocom/button';
+import { useNavigate } from 'react-router-dom';
+import { RootState } from '@zocom/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { sendOrder } from '@zocom/order-button';
 
 export const OrderButton = () => {
   const cartState = useSelector((state: RootState) => state.cart.menuList);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   async function handleClick() {
+    if (cartState.wonton.length === 0 && cartState.dip.length === 0) {
+      return;
+    }
 
-    const response = await sendOrder("https://bw2ge5zsh6.execute-api.eu-north-1.amazonaws.com/order", cartState);
-    
-    const orderId = response.orderId;
-    
-    //Navigate to next page when done (If successful?)
-    navigate("/status", { state: orderId });
+    const response = await sendOrder(
+      'https://lryd33u6vk.execute-api.eu-north-1.amazonaws.com/order',
+      cartState
+    );
+    if (!response) return;
+
+    const orderItem = response.orderItem;
+    localStorage.setItem(orderItem.orderId, JSON.stringify(orderItem));
+
+    dispatch({ type: 'CLEAR_CART' });
+    navigate(`/status/`, { state: orderItem.orderId });
   }
 
   return (
-      <Button type={ButtonType.REGULAR} onClick={() => handleClick()}>
-        TAKE MY MONEY
-      </Button>
+    <Button type={ButtonType.REGULAR} onClick={() => handleClick()}>
+      TAKE MY MONEY
+    </Button>
   );
 };
