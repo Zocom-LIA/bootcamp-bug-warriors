@@ -1,32 +1,55 @@
 @use '@zocom/styles' as *;
 
 .wrapper-mobile {
-    @include center;
-    height: $wrapper-mobile-height;
-    width: $wrapper-mobile-width;
-    background-color: $mint;
-    margin: $margin-center;
+  @include center;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $mint;
+  margin: $margin-center;
+}
+
+.wrapper-eta {
+  @include centerElement;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $clay;
+  margin: $margin-center;
+}
+.wrapper-done {
+  @include centerElement;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $dark-mint;
+  margin: $margin-center;
 }
 
 .wrapper-main {
-    @include centerElement;
-    height: $wrapper-mobile-height;
-    width: $wrapper-mobile-width;
-    background-color: $mint;
-    background-image: url(../assets/background.png);
-    margin: $margin-center;
+  @include centerElement;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $mint;
+  background-image: url(../assets/background.png);
+  margin: $margin-center;
+}
+
+.wrapper-receipt {
+  @include centerElement;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $clay;
+  margin: $margin-center;
 }
 
 .wrapper-tablet {
-    @include center;
-    height: $wrapper-tablet-height;
-    width: $wrapper-tablet-width;
+  @include center;
+  height: $wrapper-tablet-height;
+  width: $wrapper-tablet-width;
 }
 
 .wrapper-cart {
-    @include centerElement;
-    height: $wrapper-mobile-height;
-    width: $wrapper-mobile-width;
-    background-color: $ash;
-    margin: $margin-center;
+  @include centerElement;
+  height: $wrapper-mobile-height;
+  width: $wrapper-mobile-width;
+  background-color: $ash;
+  margin: $margin-center;
 }
