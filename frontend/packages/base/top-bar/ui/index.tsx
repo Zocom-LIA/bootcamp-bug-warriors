@@ -1,7 +1,6 @@
 import './style.scss';
 import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { Logo } from '@zocom/logo';
-import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export const TopBar = () => {
@@ -10,7 +9,7 @@ export const TopBar = () => {
 
   return (
     <div className='top-bar'>
-      <img src={Logo} alt='logo' onClick={() => navigate('/')}/>
+      <img src={Logo} alt='logo' onClick={() => navigate('/')} />
       {/* <CartButton
         style={CartButtonStyles.MENU}
         animate={animate ? Animation.ANIMATE : Animation.NONE}

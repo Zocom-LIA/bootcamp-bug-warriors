@@ -27,7 +27,7 @@ export const Status = ({ orderNr, eta, orderReady }: Props) => {
         {orderReady ? 'DINA WONTONS ÄR KLARA!' : 'DINA WONTONS TILLAGAS!'}
       </p>
       <p className='status__eta'>{orderReady ? '-' : `ETA ${eta} MIN`}</p>
-      <p className='status__order'>#{orderNr}</p>
+      <p className='status__order'>{orderNr}</p>
     </section>
   );
 };

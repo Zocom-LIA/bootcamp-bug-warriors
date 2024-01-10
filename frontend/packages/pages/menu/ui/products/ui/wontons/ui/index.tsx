@@ -1,5 +1,4 @@
 import './style.scss';
-import React from 'react';
 import { WontonItem } from '@zocom/types';
 
 interface WontonItemComponentProps {

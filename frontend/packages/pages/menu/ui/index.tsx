@@ -1,17 +1,17 @@
-import "./style.scss";
-import { MenuItemsContainer } from "@zocom/menu-container";
-import { Styles, Wrapper } from "@zocom/wrapper";
-import { addItem } from "@zocom/cart-actions";
-import { RootState } from "@zocom/store";
-import { useDispatch, useSelector } from "react-redux";
-import { WontonItem } from "@zocom/types";
+import './style.scss';
+import { MenuItemsContainer } from '@zocom/menu-container';
+import { Styles, Wrapper } from '@zocom/wrapper';
+import { addItem } from '@zocom/cart-actions';
+import { RootState } from '@zocom/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { WontonItem } from '@zocom/types';
 // import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
-import { useEffect, useState } from "react";
-import { TopBar } from "@zocom/top-bar";
-import { fetchMenu } from "@zocom/products";
-import { WontonItemComponent } from "@zocom/wontons";
-import { DipItemComponent } from "@zocom/dips";
-import { MenuList, DipItem } from "@zocom/types";
+import { useEffect, useState } from 'react';
+import { TopBar } from '@zocom/top-bar';
+import { fetchMenu } from '@zocom/products';
+import { WontonItemComponent } from '@zocom/wontons';
+import { DipItemComponent } from '@zocom/dips';
+import { MenuList, DipItem } from '@zocom/types';
 
 export const Menu = () => {
   const [menu, setMenu] = useState<MenuList | null>(null);
@@ -26,14 +26,14 @@ export const Menu = () => {
   useEffect(() => {
     fetchMenu()
       .then(setMenu)
-      .catch((error) => console.error("Error fetching menu:", error));
+      .catch((error) => console.error('Error fetching menu:', error));
   }, []);
 
   if (!menu) {
     return <div>Loading.....</div>;
   }
 
-  console.log("cartItems", cartState);
+  console.log('cartItems', cartState);
 
   const handleSelectDip: React.MouseEventHandler<HTMLButtonElement> = (
     event
@@ -41,7 +41,7 @@ export const Menu = () => {
     event.stopPropagation();
     const button = event.currentTarget;
 
-    button.classList.toggle("sauce_button-active");
+    button.classList.toggle('sauce_button-active');
     if (selectedDip.includes(button.textContent!)) {
       setSelectedDips(
         selectedDip.filter((sauce) => sauce !== button.textContent!)
@@ -52,12 +52,12 @@ export const Menu = () => {
   };
 
   const handleAddItem = (item: WontonItem) => {
-    dispatch(addItem(item, "wonton"));
+    dispatch(addItem(item, 'wonton'));
     setAnimate(true);
   };
 
   const handleAddDipItem = (item: WontonItem) => {
-    dispatch(addItem(item, "dip"));
+    dispatch(addItem(item, 'dip'));
     setAnimate(true);
   };
   // const handleIncrease = (item: Product) => {
@@ -80,7 +80,7 @@ export const Menu = () => {
     <Wrapper style={Styles.MAIN}>
       <TopBar />
       <MenuItemsContainer>
-        <h1 className="menu-heading">MENY</h1>
+        <h1 className='menu-heading'>MENY</h1>
         {menu.wonton.map((item, index) => (
           <WontonItemComponent
             key={index}

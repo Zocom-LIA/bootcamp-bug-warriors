@@ -43,7 +43,7 @@ export interface OrderData {
 }
 
 /* DynamoDB items */
-import { AttributeValue } from "@aws-sdk/client-dynamodb";
+import { AttributeValue } from '@aws-sdk/client-dynamodb';
 
 export type DynamoDBItem = {
   PK: AttributeValue;
@@ -85,10 +85,29 @@ export type DynamoDBOrder = {
   totalPrice: { N: string };
 };
 
+export type ClientItems = {
+  name?: string;
+  desc?: string;
+  price?: string;
+  quantity?: string;
+  preparationTime?: string;
+  ingredients?: string[];
+};
+
+export type ClientOrder = {
+  orderId: string;
+  customerId: string;
+  status: string;
+  eta: string;
+  items: any;
+  orderTime: string;
+  totalPrice: string;
+};
+
 /* Validation and Schema types */
 
-import { APIGatewayProxyEventV2 } from "aws-lambda";
-import middy from "@middy/core";
+import { APIGatewayProxyEventV2 } from 'aws-lambda';
+import middy from '@middy/core';
 
 interface ValidationErrorDetail {
   message: string;
@@ -106,10 +125,10 @@ export type CustomMiddleware = middy.MiddlewareObj<APIGatewayProxyEventV2>;
 /* Params types */
 
 export enum OrderStatus {
-  Pending = "Pending",
-  Preparing = "Preparing",
-  ReadyForDelivery = "ReadyForDelivery",
-  Delivered = "Delivered",
+  Pending = 'Pending',
+  Preparing = 'Preparing',
+  ReadyForDelivery = 'ReadyForDelivery',
+  Delivered = 'Delivered',
 }
 
 export type UpdateOrderParams = {
@@ -120,10 +139,10 @@ export type UpdateOrderParams = {
   };
   UpdateExpression: string;
   ExpressionAttributeNames: {
-    "#status": string;
+    '#status': string;
   };
   ExpressionAttributeValues: {
-    ":s": { S: OrderStatus };
+    ':s': { S: OrderStatus };
   };
 };
 
@@ -132,12 +151,12 @@ export type QueryParams = {
   IndexName: string;
   KeyConditionExpression: string;
   ExpressionAttributeNames: {
-    "#status": string;
-    "#items": string;
-    "#orderTime": string;
+    '#status': string;
+    '#items': string;
+    '#orderTime': string;
   };
   ExpressionAttributeValues: {
-    ":statusVal": { S: OrderStatus };
+    ':statusVal': { S: OrderStatus };
   };
   ProjectionExpression: string;
 };
@@ -147,7 +166,7 @@ export type QueryUserParams = {
   IndexName: string;
   KeyConditionExpression: string;
   ExpressionAttributeValues: {
-    ":username": { S: string };
+    ':username': { S: string };
   };
 };
 
@@ -156,9 +175,9 @@ export type PutUserParams = {
   Item: {
     PK: { S: string };
     SK: { S: string };
-    username: { S: AdminDetails["username"] };
+    username: { S: AdminDetails['username'] };
     password: { S: string }; // Hash the password before storing
-    email: { S: AdminDetails["email"] };
+    email: { S: AdminDetails['email'] };
   };
 };
 
