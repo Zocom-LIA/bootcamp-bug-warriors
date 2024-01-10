@@ -7,5 +7,5 @@ type DashboardContainerProps = {
 };
 
 export function DashboardContainer({ children }: DashboardContainerProps) {
-  return <main className="menu-container">{children}</main>;
+  return <main className="dashboard-container">{children}</main>;
 }

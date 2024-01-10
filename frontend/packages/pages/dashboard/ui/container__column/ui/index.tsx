@@ -3,8 +3,8 @@ import "./style.scss";
 import React from "react";
 
 export enum Status {
-  Preparing = "PREPARING",
-  Ready = "READY",
+  Ongoing = "ONGOING",
+  Done = "DONE",
 }
 
 type DashboardColumnProps = {
@@ -15,10 +15,10 @@ type DashboardColumnProps = {
 export function DashboardColumn({ children, status }: DashboardColumnProps) {
   return (
     <main className="dashboard-column">
-      <div>
-        <div>{status}</div>
-        <span className='.line'></span>
-      </div>
+      <section className="dashboard-column__head">
+        <h2>{status}&nbsp; </h2>
+        <span className="dashboard-column__head__line"></span>
+      </section>
       {children}
     </main>
   );

@@ -41,7 +41,7 @@
 }
 
 .wrapper-tablet {
-  @include center;
+  @include row;
   height: $wrapper-tablet-height;
   width: $wrapper-tablet-width;
 }
