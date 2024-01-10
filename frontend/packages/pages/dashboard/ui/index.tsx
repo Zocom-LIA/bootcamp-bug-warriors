@@ -5,6 +5,9 @@ import { KitchenCard, OrderStatus } from '@zocom/kitchen-card';
 import { DashboardColumn, Status } from '@zocom/dashboard-container__column';
 import { TopBar } from '@zocom/top-bar';
 
+
+// TODO: Hämta ordrar
+
 export const DashboardPage = () => {
 
   return (
@@ -15,10 +18,12 @@ export const DashboardPage = () => {
       </section>
         <DashboardContainer>
             <DashboardColumn status={Status.Ongoing}>
+              {/* KitchenCard ska rendera ut ordar -> här de som ej är klara */}
                 <KitchenCard 
                 style={OrderStatus.READY} />
             </DashboardColumn>
             <DashboardColumn status={Status.Done}>
+              {/* KitchenCard ska rendera ut ordar -> här de som är klara */}
               <KitchenCard 
               style={OrderStatus.SERVED} />
             </DashboardColumn>
