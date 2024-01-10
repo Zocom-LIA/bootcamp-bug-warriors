@@ -9,9 +9,8 @@ export const handler = async (): Promise<APIGatewayProxyResultV2> => {
     return createStandardResponse(HttpStatusCode.OK, menu);
   } catch (error) {
     console.error("Error retrieving the menu:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ message: "Error retrieving the menu." }),
-    };
+    createStandardResponse(HttpStatusCode.INTERNAL_SERVER_ERROR, {
+      message: "Error retrieving the menu",
+    });
   }
 };

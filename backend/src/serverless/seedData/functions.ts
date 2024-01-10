@@ -1,33 +1,44 @@
 export const functions = {
   getMenu: {
-    handler: 'src/functions/getMenu/index.handler',
+    handler: "src/functions/getMenu/index.handler",
     events: [
       {
         httpApi: {
-          method: 'GET',
-          path: '/',
+          method: "GET",
+          path: "/",
+        },
+      },
+    ],
+  },
+  getKitchenOrders: {
+    handler: "src/functions/Admin/getKitchenOrders/index.handler",
+    events: [
+      {
+        httpApi: {
+          method: "GET",
+          path: "/kitchen",
         },
       },
     ],
   },
   postOrder: {
-    handler: 'src/functions/postOrder/index.handler',
+    handler: "src/functions/postOrder/index.handler",
     events: [
       {
         httpApi: {
-          method: 'POST',
-          path: '/order',
+          method: "POST",
+          path: "/order",
         },
       },
     ],
   },
   updateOrderStatus: {
-    handler: 'src/functions/updateOrderStatus/index.handler',
+    handler: "src/functions/updateOrderStatus/index.handler",
     events: [
       {
         httpApi: {
-          method: 'PATCH',
-          path: '/orders/{orderId}/status',
+          method: "PATCH",
+          path: "/orders/{orderId}/status",
         },
       },
     ],

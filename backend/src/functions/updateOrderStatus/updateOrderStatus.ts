@@ -14,7 +14,7 @@ export const updateOrderStatus = async (
 ): Promise<void> => {
   try {
     const getOrderParams = {
-      TableName: "Yum-Yum-table",
+      TableName: process.env.YUM_YUM_TABLE,
       Key: {
         PK: { S: "Order" },
         SK: { S: `Order#${orderId}` },
@@ -26,7 +26,7 @@ export const updateOrderStatus = async (
     }
 
     const updateParams: UpdateOrderParams = {
-      TableName: "Yum-Yum-table",
+      TableName: process.env.YUM_YUM_TABLE,
       Key: {
         PK: { S: "Order" },
         SK: { S: `Order#${orderId}` },

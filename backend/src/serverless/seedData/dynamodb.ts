@@ -5,7 +5,7 @@ export const DynamoResources: AWS["resources"] = {
     YumYumTable: {
       Type: "AWS::DynamoDB::Table",
       Properties: {
-        TableName: "Yum-Yum-table",
+        TableName: process.env.YUM_YUM_TABLE,
         AttributeDefinitions: [
           {
             AttributeName: "PK",

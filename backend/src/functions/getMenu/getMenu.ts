@@ -6,7 +6,7 @@ const client = new DynamoDBClient(dynamoDbConfig);
 
 export const getMenu = async (): Promise<IMenu> => {
   const command = new ScanCommand({
-    TableName: "Yum-Yum-table",
+    TableName: process.env.YUM_YUM_TABLE,
   });
 
   try {
