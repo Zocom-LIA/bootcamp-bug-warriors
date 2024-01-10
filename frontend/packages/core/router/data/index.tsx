@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Menu } from '@zocom/menu';
 import { Cart } from '@zocom/cart';
 // import { DashboardPage } from "@zocom/dashboard-page";
-// import { OrderStatusPage } from "@zocom/orderStatus-page";
+import { OrderStatusPage } from '@zocom/order-status-page';
 import { ReceiptPage } from '@zocom/receipt-page';
 
 const router = createBrowserRouter([
@@ -15,10 +15,10 @@ const router = createBrowserRouter([
     path: '/cart',
     element: <Cart />,
   },
-  // {
-  //   path: "/status",
-  //   element: <OrderStatusPage />,
-  // },
+  {
+    path: '/status',
+    element: <OrderStatusPage />,
+  },
   // {
   //   path: "/dashboard",
   //   element: <DashboardPage />,

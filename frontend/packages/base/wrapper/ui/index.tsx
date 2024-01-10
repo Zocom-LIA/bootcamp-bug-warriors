@@ -6,6 +6,8 @@ export enum Styles {
   'TABLET' = 'tablet',
   'MAIN' = 'main',
   'CART' = 'cart',
+  'ETA' = 'eta',
+  'DONE' = 'done',
   'RECEIPT' = 'receipt',
 }
 
