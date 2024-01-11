@@ -1,34 +1,36 @@
 import "./style.scss";
 import { CardInfo } from './card-info';
 import { Button, ButtonType } from '@zocom/button';
+import { DashboardTimer } from '@zocom/dashboard-timer';
 import React from "react";
 
-// type KitchenCardType = {
-
-// }
-
 export enum OrderStatus {
-  "READY" = "ready",
-  "SERVED" = "served",
+  "ONGOING" = "ongoing",
+  "DONE" = "done",
 }
 
 export type KitchenCardProps = {
   style?: OrderStatus;
 };
 
+
 export function KitchenCard({ style }: KitchenCardProps) {
+
+  
   return (
     <article className={`kitchen-card ${style}`}>
-      <h2 className='kitchen-card__ordernum'># ordernummer</h2>
+      <h1 className='kitchen-card__ordernum'># ordernummer</h1>
       <section className='kitchen-card__info'>
-        <CardInfo />
-        <h2>totala sek</h2>
+        {/* CardInfo ska rendera ut innehållet i en order -> produkterna ( inkl. namn, antal, pris )*/}
+        <CardInfo/>
       </section>
-      {/* Timer */}
+      <h2>totala sek</h2>
+      <DashboardTimer />
       <Button 
         onClick={() => {console.log("Click")}} 
         type={ButtonType.REGULAR}>
-      h</Button>
+          {/* {order.status === 'done' ? 'SERVERAD' : 'REDO ATT SERVERAS'} */} knappis
+      </Button>
     </article>
   );
 }

@@ -8,7 +8,11 @@
     padding: $baseline;
     margin: $margin;
     color: $clay;
-
+    h2{
+        text-align: right;
+        @include fontsizeMedium;
+        margin: $margin 0;
+    }
     &__ordernum{
         @include fontsizeLarge;
         font-weight: 300;
@@ -16,14 +20,11 @@
         margin-bottom: $margin-large;
     }
     &__info {
-        text-align: right;
-        h2{
-            @include fontsizeMedium;
-        }
+        border-bottom: 1px solid $shade-24-dark;
     }
 }
 
-.ready {
+.ongoing {
     background-color: $bacon;
     button{
         background-color: $alert;
@@ -32,11 +33,12 @@
     }
 }
 
-.served {
+.done {
     background-color: $light-mint;
     button{
       background-color: $dark-mint;
       padding: $padding;
       margin-top: $margin;
+      content: "Redo";
     }
 }
