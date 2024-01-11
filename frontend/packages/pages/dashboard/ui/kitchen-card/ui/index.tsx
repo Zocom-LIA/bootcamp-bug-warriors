@@ -2,6 +2,7 @@ import "./style.scss";
 import { CardInfo } from './card-info';
 import { Button, ButtonType } from '@zocom/button';
 import { DashboardTimer } from '@zocom/dashboard-timer';
+import React from "react";
 
 export enum OrderStatus {
   "ONGOING" = "ongoing",
