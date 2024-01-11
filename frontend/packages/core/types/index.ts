@@ -60,6 +60,7 @@ export interface OrderItem {
   totalPrice: number;
   status: string;
   SK: string;
+  orderTime: number;
   items: ItemInOrder[];
 }
 

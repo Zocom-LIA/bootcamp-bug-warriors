@@ -37,3 +37,18 @@ export async function fetchOrders(): Promise<OrderItem[]> {
   }
   return response.json();
 }
+
+export function calculateElapsedTime(orderTime: string): string {
+  const orderDate = new Date(orderTime);
+  const now = new Date();
+
+  const elapsedMs = now.getTime() - orderDate.getTime();
+
+  const minutes = Math.floor((elapsedMs / (1000 * 60)) % 60);
+  const seconds = Math.floor((elapsedMs / 1000) % 60);
+
+  return ` ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+    2,
+    '0'
+  )}`;
+}

@@ -4,13 +4,12 @@ import { DashboardContainer } from '@zocom/dashboard-container';
 import { KitchenCard } from '@zocom/kitchen-card';
 import { DashboardColumn, Status } from '@zocom/dashboard-container__column';
 import { TopBar } from '@zocom/top-bar';
-import { changeOrderStatus, fetchOrders } from '@zocom/dashboard-page';
+import { fetchOrders } from '@zocom/dashboard-page';
 import { useEffect, useState } from 'react';
 import { OrderItem, OrderStatus } from '@zocom/types';
 
 export const DashboardPage = () => {
   const [orders, setOrders] = useState<OrderItem[]>([]);
-  const [change, setChange] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,31 +21,34 @@ export const DashboardPage = () => {
       }
     };
     fetchData();
-  }, [change]);
-
-  console.log(orders);
+  }, []);
 
   const handleCardClick = (orderId: string) => {
     const updatedOrders = orders.map((order) => {
-      if (order.SK === orderId) {
+      if (order.SK === orderId && order.status === OrderStatus.Pending) {
         return {
           ...order,
-          status:
-            order.status === OrderStatus.Pending
-              ? OrderStatus.ReadyForDelivery
-              : OrderStatus.Pending,
+          status: OrderStatus.ReadyForDelivery,
+        };
+      } else if (
+        order.SK === orderId &&
+        order.status === OrderStatus.ReadyForDelivery
+      ) {
+        return {
+          ...order,
+          status: OrderStatus.Delivered,
         };
       }
       return order;
     });
     setOrders(updatedOrders);
-    setChange(!change);
   };
 
   const ordersPending = orders.filter((item) => item.status === 'Pending');
   const ordersToRender = ordersPending.map((item) => {
     return (
       <KitchenCard
+        key={item.SK}
         style={OrderStatus.Preparing}
         item={item}
         onClick={() => handleCardClick(item.SK)}
@@ -60,6 +62,7 @@ export const DashboardPage = () => {
   const ordersReadyToRender = ordersReady.map((item) => {
     return (
       <KitchenCard
+        key={item.SK}
         style={OrderStatus.ReadyForDelivery}
         item={item}
         onClick={() => handleCardClick(item.SK)}

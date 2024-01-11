@@ -1,17 +1,14 @@
-import "./style.scss";
-import { ReactNode } from "react";
-import { StyleTypes } from "@zocom/types";
-import React from "react";
-
+import './style.scss';
+import { ReactNode } from 'react';
 /* Local Component Types */
 export enum ButtonType {
-  "REGULAR" = "regular",
-  "STRETCH" = "stretch",
-  "MENU" = "menu",
-  "INVERTED" = "inverted",
-  "READY" = "ready",
-  "SERVED" = "served",
-  "INCDEC" = "incdec",
+  'REGULAR' = 'regular',
+  'STRETCH' = 'stretch',
+  'MENU' = 'menu',
+  'INVERTED' = 'inverted',
+  'READY' = 'ready',
+  'SERVED' = 'served',
+  'INCDEC' = 'incdec',
 }
 
 /* Component Props */

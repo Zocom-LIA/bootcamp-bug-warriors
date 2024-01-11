@@ -10,10 +10,6 @@ export const TopBar = () => {
   return (
     <div className='top-bar'>
       <img src={Logo} alt='logo' onClick={() => navigate('/')} />
-      {/* <CartButton
-        style={CartButtonStyles.MENU}
-        animate={animate ? Animation.ANIMATE : Animation.NONE}
-      ></CartButton> */}
       {currentRoute === '/' ? (
         <CartButton style={CartButtonStyles.MENU}></CartButton>
       ) : currentRoute === '/cart' ? (

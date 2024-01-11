@@ -1,6 +1,6 @@
-import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
-import { dynamoDbConfig } from "src/database/core/dbConfig";
-import { DynamoDBOrder } from "src/types";
+import { DynamoDBClient, QueryCommand } from '@aws-sdk/client-dynamodb';
+import { dynamoDbConfig } from 'src/database/core/dbConfig';
+import { DynamoDBOrder } from 'src/types';
 
 const dynamoDBClient = new DynamoDBClient(dynamoDbConfig);
 
@@ -8,9 +8,9 @@ export const getKitchenOrders = async (): Promise<any> => {
   try {
     const params = {
       TableName: process.env.YUM_YUM_TABLE,
-      KeyConditionExpression: "PK = :pkValue",
+      KeyConditionExpression: 'PK = :pkValue',
       ExpressionAttributeValues: {
-        ":pkValue": { S: "Order" },
+        ':pkValue': { S: 'Order' },
       },
     };
 
@@ -22,6 +22,7 @@ export const getKitchenOrders = async (): Promise<any> => {
       totalPrice: parseInt(item.totalPrice.N),
       status: item.status.S,
       SK: item.SK.S.slice(5),
+      orderTime: item.orderTime.S,
       items: item.items.L.map((subItem: any) => ({
         name: subItem.M.name.S,
         quantity: parseInt(subItem.M.quantity.N),
@@ -31,7 +32,7 @@ export const getKitchenOrders = async (): Promise<any> => {
 
     return orders;
   } catch (error) {
-    console.error("Error fetching kitchen orders", error);
+    console.error('Error fetching kitchen orders', error);
     throw error;
   }
 };
