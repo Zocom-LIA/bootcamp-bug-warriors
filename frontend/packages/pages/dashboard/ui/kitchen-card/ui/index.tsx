@@ -27,7 +27,7 @@ export function KitchenCard({ style }: KitchenCardProps) {
       <Button 
         onClick={() => {console.log("Click")}} 
         type={ButtonType.REGULAR}>
-          {/* EXEMPEL - > {order.orderStatus === 'done' ? 'Serverad' : 'Redo att serveras'} */} knappis
+          {/* EXEMPEL - > {order.orderStatus === 'done' ? 'SERVERAD' : 'REDO ATT SERVERAS'} */} knappis
       </Button>
     </article>
   );
