@@ -125,7 +125,7 @@ export const postOrder = async (
 
     await client.send(
       new PutItemCommand({
-        TableName: 'Yum-Yum-table',
+        TableName: process.env.YUM_YUM_TABLE,
         Item: orderItem,
       })
     );

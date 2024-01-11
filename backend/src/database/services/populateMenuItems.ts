@@ -2,6 +2,10 @@ import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { dynamoDbConfig } from "../core/dbConfig";
 import { IWonton, DynamoDBItem } from "src/types";
 import menu from "../../../menu.json";
+import dotenv from "dotenv";
+dotenv.config();
+
+console.log(process.env);
 
 const client = new DynamoDBClient(dynamoDbConfig);
 
@@ -26,9 +30,11 @@ async function populateMenu() {
       preparationTime: { N: preparationTime.toString() },
     };
 
+    console.log(process.env.YUM_YUM_TABLE);
+
     await client.send(
       new PutItemCommand({
-        TableName: "Yum-Yum-table",
+        TableName: process.env.YUM_YUM_TABLE,
         Item: dynamoDBWontonItem,
       })
     );
@@ -45,7 +51,7 @@ async function populateMenu() {
 
     await client.send(
       new PutItemCommand({
-        TableName: "Yum-Yum-table",
+        TableName: process.env.YUM_YUM_TABLE,
         Item: dynamoDBDipItem,
       })
     );

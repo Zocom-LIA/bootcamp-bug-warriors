@@ -7,6 +7,22 @@ import { ButtonType, Button } from '@zocom/button';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+function notifyMe() {
+  if (!('Notification' in window)) {
+    alert('This browser does not support desktop notification');
+  } else if (Notification.permission === 'granted') {
+    const notification = new Notification('Din order är redo!');
+    // …
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        const notification = new Notification('Din order är redo!');
+        // …
+      }
+    });
+  }
+}
+
 export const OrderStatusPage = () => {
   const orderId = useLocation().state;
   const navigate = useNavigate();
@@ -23,6 +39,7 @@ export const OrderStatusPage = () => {
       if (timeLeftInMinutes > 1) {
         setTimeLeftInMinutes(timeLeftInMinutes - 1);
       } else {
+        notifyMe();
         setOrderReady(true);
       }
     }, 60000);

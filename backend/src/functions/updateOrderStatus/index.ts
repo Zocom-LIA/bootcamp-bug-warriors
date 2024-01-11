@@ -10,6 +10,14 @@ const baseHandler = async (
   event: APIGatewayProxyEventV2
 ): Promise<APIGatewayProxyResultV2> => {
   try {
+    const apiKey = event.headers["x-api-key"];
+
+    if (apiKey !== process.env.API_KEY) {
+      return createStandardResponse(HttpStatusCode.UNAUTHORIZED, {
+        message: "Unauthorized",
+      });
+    }
+
     const orderId = event.pathParameters?.orderId;
     const { newStatus } = JSON.parse(event.body);
 
