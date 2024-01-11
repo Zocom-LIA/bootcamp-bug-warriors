@@ -14,11 +14,9 @@ export const OrderButton = () => {
     if (cartState.wonton.length === 0 && cartState.dip.length === 0) {
       return;
     }
+    const API_URL: string = import.meta.env.VITE_API_URL;
 
-    const response = await sendOrder(
-      'https://lryd33u6vk.execute-api.eu-north-1.amazonaws.com/order',
-      cartState
-    );
+    const response = await sendOrder(`${API_URL}/order`, cartState);
     if (!response) return;
 
     const orderItem = response.orderItem;
