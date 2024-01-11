@@ -1,0 +1,4 @@
+{
+  "name": "@zocom/dashboard-timer",
+  "main": "./index.ts"
+}
