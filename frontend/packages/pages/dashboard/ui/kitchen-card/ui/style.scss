@@ -1,44 +1,42 @@
-@use "@zocom/styles" as *;
+@use '@zocom/styles' as *;
 
 .kitchen-card {
-    height: 22rem;
-    width: 22rem;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: $baseline;
-    margin: $margin;
-    color: $clay;
-    h2{
-        text-align: right;
-        @include fontsizeMedium;
-        margin: $margin 0;
-    }
-    &__ordernum{
-        @include fontsizeLarge;
-        font-weight: 300;
-        text-align: center;
-        margin-bottom: $margin-large;
-    }
-    &__info {
-        border-bottom: 1px solid $shade-24-dark;
-    }
+  width: 22rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: $baseline;
+  margin: $margin;
+  color: $clay;
+  h2 {
+    text-align: right;
+    @include fontsizeMedium;
+    margin: $margin 0;
+  }
+  &__ordernum {
+    @include fontsizeLarge;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: $margin-large;
+  }
+  &__info {
+    border-bottom: 1px solid $shade-24-dark;
+  }
 }
 
-.ongoing {
-    background-color: $bacon;
-    button{
-        background-color: $alert;
-        padding: $padding;
-        margin-top: $margin;
-    }
+.Preparing {
+  background-color: $bacon;
+  button {
+    background-color: $alert;
+    padding: $padding;
+    margin-top: $margin;
+  }
 }
 
-.done {
-    background-color: $light-mint;
-    button{
-      background-color: $dark-mint;
-      padding: $padding;
-      margin-top: $margin;
-      content: "Redo";
-    }
+.ReadyForDelivery {
+  background-color: $light-mint;
+  button {
+    background-color: $dark-mint;
+    padding: $padding;
+    margin-top: $margin;
+  }
 }

@@ -1,23 +1,20 @@
-import React from "react";
-import "./style.scss";
+import { ItemInOrder } from '@zocom/types';
+import './style.scss';
 
-/* To-Do: 
-Hämta order obj 
-*/
+export type CardInfoProps = {
+  item: ItemInOrder;
+};
 
-
-export function CardInfo() {
-
-  
+export function CardInfo({ item }: CardInfoProps) {
   return (
-    <article className="card-info">
-      <section className="card-info__prod">
-        <p>Produkt &nbsp; </p>
-        <aside></aside>
-        <p>&nbsp;  3 st</p>
+    <article className='card-info'>
+      <section className='card-info__prod'>
+        <p className='card-info__prod-name'>{item?.name} &nbsp; </p>
+        <span className='card-info__prod-line'></span>
+        <p className='card-info__prod-amount'>&nbsp; {item?.quantity} st</p>
       </section>
-      <section className="card-info__total">
-        <p>27 sek</p>
+      <section className='card-info__total'>
+        <p>{item?.price} sek</p>
       </section>
     </article>
   );

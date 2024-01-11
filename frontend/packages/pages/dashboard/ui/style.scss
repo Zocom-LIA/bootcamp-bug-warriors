@@ -1,8 +1,22 @@
-@use "@zocom/styles" as *;
+@use '@zocom/styles' as *;
 
-.dashboard-top{
-    display: flex;
-    align-items: center;
-    color: $snow;
-    @include fontsizeExtraLarge;
+.dashboard-top {
+  display: flex;
+  align-items: center;
+  color: $snow;
+  @include fontsizeExtraLarge;
+}
+
+.dashboard-columns {
+  overflow: scroll;
+  max-height: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  scrollbar-width: none;
+  min-width: 50%;
+}
+
+.dashboard-columns::-webkit-scrollbar {
+  display: none;
 }

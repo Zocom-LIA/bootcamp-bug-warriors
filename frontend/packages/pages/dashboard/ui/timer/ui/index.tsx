@@ -1,47 +1,53 @@
-import React from 'react';
 import './style.scss';
 import { useState, useEffect } from 'react';
+import { OrderStatus } from '@zocom/types';
+import { calculateElapsedTime } from '@zocom/dashboard-page';
 
 interface DashboardTimerProps {
-  startTime: number;
+  startTime: string;
   toBeCooked?: boolean;
+  orderStatus: string;
+  orderId: string;
 }
 
-export const DashboardTimer = ({startTime, toBeCooked = true}: DashboardTimerProps) => {
-  const [elapsedTime, setElapsedTime] = useState("");
-  
-  function calculateTimeDifference(time: number): string {
-    const timeDifference = Date.now() - time;
-    
-    const seconds = Math.floor((timeDifference / 1000) % 60);
-    const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
-    const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-    
-    let timeString = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    console.log(timeString + " : " + timeDifference + " : hour:" + hours);
-    
-    timeString = hours > 0 ? `${String(hours).padStart(2, '0')}:${timeString}` : timeString;
-    return timeString;
-  }
-  
+export const DashboardTimer = ({
+  startTime,
+  toBeCooked = true,
+  orderStatus,
+  orderId,
+}: DashboardTimerProps) => {
+  const [elapsedTime, setElapsedTime] = useState('');
+  const [toBeCookedTime, setToBeCookedTime] = useState(true);
+
   useEffect(() => {
-    if(toBeCooked) {
-      const elapsedTime = setInterval(() => {
-        const timeToDisplayString = calculateTimeDifference(startTime);
-        setElapsedTime(`VÄNTAT I ${timeToDisplayString}`);
-      }, 1000)
-      return () => clearInterval(elapsedTime);
+    let savedTime;
+    if (orderStatus !== OrderStatus.Pending) {
+      savedTime = localStorage.getItem(`orderTime_${orderId}`);
     }
-    else {
-      const timeToDisplayString = calculateTimeDifference(startTime);
-      setElapsedTime(`TILLAGNINGSTID ${timeToDisplayString}`);
+    savedTime = savedTime || calculateElapsedTime(startTime);
+    setElapsedTime(savedTime);
+
+    // Update elapsed time every second
+    let interval: number;
+
+    if (orderStatus === OrderStatus.Pending) {
+      setToBeCookedTime(false);
+      interval = setInterval(() => {
+        setElapsedTime(calculateElapsedTime(startTime));
+      }, 1000);
     }
-  }, []);
-  
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [startTime, orderStatus, orderId]);
+
+  if (toBeCookedTime) {
+    toBeCooked = false;
+  }
   return (
     <div className='dashboard-timer'>
-    {elapsedTime}
+      {toBeCooked ? `VÄNTAT I ${elapsedTime}` : `TILLAGNINGSTID ${elapsedTime}`}
     </div>
-    );
-  };
-  
+  );
+};

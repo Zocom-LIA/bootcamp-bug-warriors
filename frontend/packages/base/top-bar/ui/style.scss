@@ -4,4 +4,7 @@
   display: flex;
   justify-content: space-between;
   padding: $padding;
+  & img {
+    cursor: pointer;
+  }
 }
