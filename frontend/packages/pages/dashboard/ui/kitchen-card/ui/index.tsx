@@ -1,6 +1,7 @@
 import "./style.scss";
 import { CardInfo } from './card-info';
 import { Button, ButtonType } from '@zocom/button';
+import { DashboardTimer } from '@zocom/dashboard-timer';
 
 export enum OrderStatus {
   "ONGOING" = "ongoing",
@@ -23,11 +24,11 @@ export function KitchenCard({ style }: KitchenCardProps) {
         <CardInfo/>
       </section>
       <h2>totala sek</h2>
-      {/* Timer */}
+      <DashboardTimer />
       <Button 
         onClick={() => {console.log("Click")}} 
         type={ButtonType.REGULAR}>
-          {/* EXEMPEL - > {order.orderStatus === 'done' ? 'SERVERAD' : 'REDO ATT SERVERAS'} */} knappis
+          {/* {order.status === 'done' ? 'SERVERAD' : 'REDO ATT SERVERAS'} */} knappis
       </Button>
     </article>
   );
