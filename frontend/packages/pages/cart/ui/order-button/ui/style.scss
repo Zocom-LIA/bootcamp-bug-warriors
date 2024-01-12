@@ -23,18 +23,7 @@
   text-shadow: $text-shadow-med;
   background: inherit;
   color: $snow;
-  // margin-bottom: 0.5rem;
   position: relative;
-}
-// .menu-item:before {
-//   content: '';
-//   position: absolute;
-//   bottom: 0.4rem;
-//   width: 100%;
-//   border-bottom: 2px dotted $snow;
-// }
-.menu-item:last-child {
-  border: none;
 }
 
 .menu-item-price {

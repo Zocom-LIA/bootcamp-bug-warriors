@@ -2,10 +2,10 @@ import {
   UpdateItemCommand,
   DynamoDBClient,
   GetItemCommand,
-} from "@aws-sdk/client-dynamodb";
-import { dynamoDbConfig } from "src/database/core/dbConfig";
-import { OrderStatus, UpdateOrderParams } from "src/types";
-import { NonExistingOrder } from "src/utils/errors";
+} from '@aws-sdk/client-dynamodb';
+import { dynamoDbConfig } from 'src/database/core/dbConfig';
+import { OrderStatus, UpdateOrderParams } from 'src/types';
+import { NonExistingOrder } from 'src/utils/errors';
 
 const client = new DynamoDBClient(dynamoDbConfig);
 export const updateOrderStatus = async (
@@ -16,7 +16,7 @@ export const updateOrderStatus = async (
     const getOrderParams = {
       TableName: process.env.YUM_YUM_TABLE,
       Key: {
-        PK: { S: "Order" },
+        PK: { S: 'Order' },
         SK: { S: `Order#${orderId}` },
       },
     };
@@ -28,22 +28,21 @@ export const updateOrderStatus = async (
     const updateParams: UpdateOrderParams = {
       TableName: process.env.YUM_YUM_TABLE,
       Key: {
-        PK: { S: "Order" },
+        PK: { S: 'Order' },
         SK: { S: `Order#${orderId}` },
       },
-      UpdateExpression: "set #status = :s",
+      UpdateExpression: 'set #status = :s',
       ExpressionAttributeNames: {
-        "#status": "status",
+        '#status': 'status',
       },
       ExpressionAttributeValues: {
-        ":s": { S: newStatus },
+        ':s': { S: newStatus },
       },
     };
 
     await client.send(new UpdateItemCommand(updateParams));
-    console.log("Order status updated successfully");
   } catch (error) {
-    console.error("Error updating order status:", error);
+    console.error('Error updating order status:', error);
     throw error;
   }
 };

@@ -1,8 +1,8 @@
 @use '@zocom/styles' as *;
 
 .kitchen-card {
+  box-shadow: $shadow-sml;
   width: 22rem;
-  border: 1px solid white;
   border-radius: 5px;
   padding: $baseline;
   margin: $margin;

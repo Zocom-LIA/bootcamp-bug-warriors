@@ -1,11 +1,9 @@
-import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
-import { dynamoDbConfig } from "../core/dbConfig";
-import { IWonton, DynamoDBItem } from "src/types";
-import menu from "../../../menu.json";
-import dotenv from "dotenv";
+import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb';
+import { dynamoDbConfig } from '../core/dbConfig';
+import { IWonton, DynamoDBItem } from 'src/types';
+import menu from '../../../menu.json';
+import dotenv from 'dotenv';
 dotenv.config();
-
-console.log(process.env);
 
 const client = new DynamoDBClient(dynamoDbConfig);
 
@@ -21,7 +19,7 @@ async function populateMenu() {
   for (const wonton of menu.wontons) {
     const preparationTime = calculatePreparationTime(wonton);
     const dynamoDBWontonItem: DynamoDBItem = {
-      PK: { S: "MenuItem" },
+      PK: { S: 'MenuItem' },
       SK: { S: `Wonton#${wonton.name}` },
       name: { S: wonton.name },
       desc: { S: wonton.desc },
@@ -29,8 +27,6 @@ async function populateMenu() {
       price: { N: wonton.price.toString() },
       preparationTime: { N: preparationTime.toString() },
     };
-
-    console.log(process.env.YUM_YUM_TABLE);
 
     await client.send(
       new PutItemCommand({
@@ -42,7 +38,7 @@ async function populateMenu() {
 
   for (const dip of menu.dip) {
     const dynamoDBDipItem: DynamoDBItem = {
-      PK: { S: "MenuItem" },
+      PK: { S: 'MenuItem' },
       SK: { S: `Dip#${dip.name}` },
       name: { S: dip.name },
       desc: { S: dip.desc },
@@ -57,9 +53,9 @@ async function populateMenu() {
     );
   }
 
-  console.log("Menu items have been populated into DynamoDB.");
+  console.log('Menu items have been populated into DynamoDB.');
 }
 
 populateMenu().catch((error) => {
-  console.error("An error occurred while populating the menu:", error);
+  console.error('An error occurred while populating the menu:', error);
 });

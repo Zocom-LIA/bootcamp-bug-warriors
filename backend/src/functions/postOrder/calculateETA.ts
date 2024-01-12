@@ -11,8 +11,8 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
 
     const params: QueryParams = {
       TableName: process.env.YUM_YUM_TABLE,
-      IndexName: "StatusIndex",
-      KeyConditionExpression: "#status = :statusVal",
+      IndexName: 'StatusIndex',
+      KeyConditionExpression: '#status = :statusVal',
       ExpressionAttributeNames: {
         '#status': 'status',
         '#items': 'items',
@@ -28,18 +28,10 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
 
     if (data.Items) {
       data.Items.forEach((order) => {
-        console.log('data.Items', data.Items);
         const items = order.items;
-        console.log('items', items);
         const orderTimeAttr = order.orderTime;
         const orderStatusAttr = order.status;
 
-        console.log(
-          'orderTimeAttr',
-          orderTimeAttr,
-          'orderStatusAttr',
-          orderStatusAttr
-        );
         if (
           orderTimeAttr &&
           orderTimeAttr.S &&
@@ -73,7 +65,6 @@ export const calculateCurrentKitchenLoad = async (): Promise<number> => {
       });
     }
 
-    console.log(totalLoadTime);
     return totalLoadTime;
   } catch (error) {
     console.error('Error calculating kitchen load:', error);

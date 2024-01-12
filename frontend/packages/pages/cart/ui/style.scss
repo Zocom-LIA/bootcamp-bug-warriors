@@ -1,9 +1,8 @@
 @use '@zocom/styles' as *;
+
 .cart__items-container {
-  display: flex;
-  flex-direction: column;
+  @include columnNoGaps;
   justify-content: space-between;
-  align-items: center;
   padding: $padding;
   height: 89%;
 }
@@ -12,11 +11,8 @@
 }
 
 .cart__item-container {
+  @include columnNoGaps;
   width: 90%;
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  align-items: center;
   overflow-y: scroll;
   scrollbar-width: none;
 }

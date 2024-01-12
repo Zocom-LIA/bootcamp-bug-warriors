@@ -27,24 +27,3 @@
   margin-top: -$margin-sml;
   z-index: 1;
 }
-
-@keyframes cartHandleOpen {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(20deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.cart-logo__top {
-  transform-origin: right bottom;
-  transition: transform 0.3s ease;
-}
-
-.cart-handle-animate {
-  animation: cartHandleOpen 0.6s ease;
-}

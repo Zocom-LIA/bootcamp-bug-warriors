@@ -70,3 +70,8 @@ export enum OrderStatus {
   ReadyForDelivery = 'ReadyForDelivery',
   Delivered = 'Delivered',
 }
+
+export enum CartButtonStyles {
+  'MENU' = 'menu',
+  'CART' = 'cart',
+}

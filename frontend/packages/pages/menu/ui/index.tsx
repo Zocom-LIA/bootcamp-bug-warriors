@@ -2,10 +2,8 @@ import './style.scss';
 import { MenuItemsContainer } from '@zocom/menu-container';
 import { Styles, Wrapper } from '@zocom/wrapper';
 import { addItem } from '@zocom/cart-actions';
-import { RootState } from '@zocom/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { WontonItem } from '@zocom/types';
-// import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
 import { useEffect, useState } from 'react';
 import { TopBar } from '@zocom/top-bar';
 import { fetchMenu } from '@zocom/products';
@@ -15,8 +13,6 @@ import { MenuList, DipItem } from '@zocom/types';
 
 export const Menu = () => {
   const [menu, setMenu] = useState<MenuList | null>(null);
-  const [animate, setAnimate] = useState(false);
-  const cartState = useSelector((state: RootState) => state.cart.menuList);
 
   const [selectedDip, setSelectedDips] = useState<string[]>([]);
   const dispatch = useDispatch();
@@ -51,21 +47,11 @@ export const Menu = () => {
 
   const handleAddItem = (item: WontonItem) => {
     dispatch(addItem(item, 'wonton'));
-    setAnimate(true);
   };
 
   const handleAddDipItem = (item: WontonItem) => {
     dispatch(addItem(item, 'dip'));
-    setAnimate(true);
   };
-  // useEffect(() => {
-  //   if (animate) {
-  //     const timer = setTimeout(() => {
-  //       setAnimate(false);
-  //     }, 600);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [animate]);
 
   return (
     <Wrapper style={Styles.MAIN}>

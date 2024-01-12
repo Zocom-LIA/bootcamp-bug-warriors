@@ -1,5 +1,6 @@
 import './style.scss';
 import { WontonItem } from '@zocom/types';
+import { motion } from 'framer-motion';
 
 interface WontonItemComponentProps {
   item: WontonItem;
@@ -12,19 +13,25 @@ export const WontonItemComponent = ({
 }: WontonItemComponentProps) => {
   const { name, price, ingredients } = item;
   return (
-    <div
-      className='menu-item'
-      onClick={() => {
-        handleAddItem(item);
-      }}
+    <motion.div
+      whileTap={{ scale: 0.5 }}
+      whileHover={{ y: -10, scaleY: 1.1 }}
+      className='framer-motion'
     >
-      <section className='menu-item__product'>
-        <span className='menu-item-name'>{name}&nbsp;</span>
-        <span className='menu-item-price'>&nbsp;{price}</span>
-      </section>
-      <section className='menu-item__ingredients'>
-        {ingredients?.join(', ')}
-      </section>
-    </div>
+      <div
+        className='menu-item'
+        onClick={() => {
+          handleAddItem(item);
+        }}
+      >
+        <section className='menu-item__product'>
+          <span className='menu-item-name'> {name}&nbsp; </span>
+          <span className='menu-item-price'>&nbsp; {price}</span>
+        </section>
+        <section className='menu-item__ingredients'>
+          {ingredients?.join(', ')}
+        </section>
+      </div>
+    </motion.div>
   );
 };

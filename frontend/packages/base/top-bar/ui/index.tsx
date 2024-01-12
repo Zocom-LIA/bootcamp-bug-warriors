@@ -1,7 +1,8 @@
 import './style.scss';
-import { CartButton, CartButtonStyles, Animation } from '@zocom/cart-button';
+import { CartButton, Animation } from '@zocom/cart-button';
 import { Logo } from '@zocom/logo';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { CartButtonStyles } from '@zocom/types';
 
 export const TopBar = () => {
   const currentRoute = useLocation().pathname;

@@ -17,7 +17,7 @@ export const DashboardPage = () => {
         const response = await fetchOrders();
         setOrders(response);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     fetchData();
