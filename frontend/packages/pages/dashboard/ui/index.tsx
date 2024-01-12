@@ -45,7 +45,10 @@ export const DashboardPage = () => {
   };
 
   const ordersPending = orders.filter((item) => item.status === 'Pending');
-  const ordersToRender = ordersPending.map((item) => {
+  const ordersPendingTimeSorted = ordersPending.sort((a, b) => {
+    return new Date(a.orderTime).getTime() - new Date(b.orderTime).getTime();
+  });
+  const ordersToRender = ordersPendingTimeSorted.map((item) => {
     return (
       <KitchenCard
         key={item.SK}
@@ -59,7 +62,10 @@ export const DashboardPage = () => {
   const ordersReady = orders.filter(
     (item) => item.status === 'ReadyForDelivery'
   );
-  const ordersReadyToRender = ordersReady.map((item) => {
+  const ordersReadyTimeSorted = ordersReady.sort((a, b) => {
+    return new Date(a.orderTime).getTime() - new Date(b.orderTime).getTime();
+  });
+  const ordersReadyToRender = ordersReadyTimeSorted.map((item) => {
     return (
       <KitchenCard
         key={item.SK}

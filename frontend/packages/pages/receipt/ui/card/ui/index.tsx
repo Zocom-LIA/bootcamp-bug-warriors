@@ -16,8 +16,8 @@ export const ReceiptCard = () => {
     return (
       <section className='receipt-item' key={index}>
         <section className='receipt-item__info'>
-          <span>{item.name}</span>
-          <span>{item.price} SEK</span>
+          <span>{item.name}&nbsp;</span>
+          <span>&nbsp;{item.price} SEK</span>
         </section>
         <section className='receipt-item__amount'>
           <span>{item.quantity} stycken</span>

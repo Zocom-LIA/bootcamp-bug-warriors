@@ -19,8 +19,8 @@ export const WontonItemComponent = ({
       }}
     >
       <section className='menu-item__product'>
-        <span className='menu-item-name'> {name} </span>
-        <span className='menu-item-price'> {price}</span>
+        <span className='menu-item-name'>{name}&nbsp;</span>
+        <span className='menu-item-price'>&nbsp;{price}</span>
       </section>
       <section className='menu-item__ingredients'>
         {ingredients?.join(', ')}

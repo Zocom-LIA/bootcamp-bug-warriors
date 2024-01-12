@@ -1,0 +1,26 @@
+@use '@zocom/styles' as *;
+.cart__items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding;
+  height: 89%;
+}
+.cart__item-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cart__item-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.cart__total-container {
+  width: 100%;
+}

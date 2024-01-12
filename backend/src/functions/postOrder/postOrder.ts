@@ -27,7 +27,7 @@ export const postOrder = async (
 ): Promise<APIGatewayProxyResultV2> => {
   try {
     const orderData: OrderData = JSON.parse(event.body);
-    const orderId = nanoid();
+    const orderId = nanoid(10);
     const customerId = nanoid();
     const formatDate = (date: Date) => {
       const pad = (num: number) => num.toString().padStart(2, '0');

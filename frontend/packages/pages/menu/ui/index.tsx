@@ -30,10 +30,8 @@ export const Menu = () => {
   }, []);
 
   if (!menu) {
-    return <div>Loading.....</div>;
+    return <div className='menu__loading'>Loading.....</div>;
   }
-
-  console.log('cartItems', cartState);
 
   const handleSelectDip: React.MouseEventHandler<HTMLButtonElement> = (
     event
@@ -60,13 +58,6 @@ export const Menu = () => {
     dispatch(addItem(item, 'dip'));
     setAnimate(true);
   };
-  // const handleIncrease = (item: Product) => {
-  //   dispatch(increase(item));
-  // };
-  // const handleDecrease = (item: Product) => {
-  //   dispatch(decrease(item));
-  // };
-
   // useEffect(() => {
   //   if (animate) {
   //     const timer = setTimeout(() => {

@@ -36,7 +36,9 @@ export function KitchenCard({ style, item, onClick }: KitchenCardProps) {
     <article className={`kitchen-card ${style}`}>
       <h1 className='kitchen-card__ordernum'>{item?.SK}</h1>
       <section className='kitchen-card__info'>{itemsInOrder}</section>
-      <h2>{item?.totalPrice} sek</h2>
+      <h2>
+        {item.orderTime} {item?.totalPrice} sek
+      </h2>
       <DashboardTimer
         startTime={item.orderTime.toString()}
         orderStatus={item.status}

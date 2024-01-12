@@ -16,13 +16,18 @@ export const Cart = () => {
   return (
     <Wrapper style={Styles.CART}>
       <TopBar />
-      <CartItemsContainer>
-        {combinedItems.map((item, i) => (
-          <CartItem key={i} menuItem={item} />
-        ))}
-      </CartItemsContainer>
-      <CartTotalPrice wonton={menuList.wonton} dip={menuList.dip} />
-      <OrderButton />
+      {/* <CartItemsContainer> */}
+      <section className='cart__items-container'>
+        <div className='cart__item-container'>
+          {combinedItems.map((item, i) => (
+            <CartItem key={i} menuItem={item} />
+          ))}
+        </div>
+        <div className='cart__total-container'>
+          <CartTotalPrice wonton={menuList.wonton} dip={menuList.dip} />
+          <OrderButton />
+        </div>
+      </section>
     </Wrapper>
   );
 };

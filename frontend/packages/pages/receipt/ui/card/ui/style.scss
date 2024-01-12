@@ -9,15 +9,10 @@
   align-items: center;
   border-radius: $radius-tier-2;
   overflow-y: auto;
+  scrollbar-width: none;
 }
-
-.receipt-card__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: $padding;
-  height: 89%;
+.receipt-card::-webkit-scrollbar {
+  display: none;
 }
 
 .receipt-card__logo {
