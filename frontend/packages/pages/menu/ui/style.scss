@@ -1,1 +1,5 @@
 @use '@zocom/styles' as *;
+
+.menu__loading {
+  @include centerElement;
+}

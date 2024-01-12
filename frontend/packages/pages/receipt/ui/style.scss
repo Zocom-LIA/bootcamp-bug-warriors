@@ -1,0 +1,10 @@
+@use '@zocom/styles' as *;
+
+.receipt-card__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding;
+  height: 89%;
+}

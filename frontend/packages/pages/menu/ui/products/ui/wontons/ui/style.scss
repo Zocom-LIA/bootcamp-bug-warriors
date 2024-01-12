@@ -1,5 +1,8 @@
 @use '@zocom/styles' as *;
-
+.framer-motion {
+  width: 100%;
+  background-color: inherit;
+}
 .menu-item {
   @include fontsizeLarge;
   @include column;
@@ -13,7 +16,7 @@
 
 .menu-item:hover {
   cursor: pointer;
-  background-color: $shade-12-light;
+  //   background-color: $shade-12-light;
 }
 
 .menu-item__product {

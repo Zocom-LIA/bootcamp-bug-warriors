@@ -1,0 +1,22 @@
+@use '@zocom/styles' as *;
+
+.cart__items-container {
+  @include columnNoGaps;
+  justify-content: space-between;
+  padding: $padding;
+  height: 89%;
+}
+.cart__item-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cart__item-container {
+  @include columnNoGaps;
+  width: 90%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.cart__total-container {
+  width: 100%;
+}

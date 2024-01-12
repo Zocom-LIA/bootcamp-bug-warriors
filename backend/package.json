@@ -13,6 +13,7 @@
     "@aws-sdk/client-dynamodb": "^3.478.0",
     "@middy/core": "^3.6.2",
     "@middy/http-json-body-parser": "^3.6.2",
+    "aws-sdk": "^2.1532.0",
     "bcrypt-ts": "^5.0.0",
     "dotenv": "^16.3.1",
     "http-errors": "^2.0.0",

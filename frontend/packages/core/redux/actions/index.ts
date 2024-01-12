@@ -1,16 +1,33 @@
-import { Product } from '@zocom/types'
+import { WontonItem, DipItem } from '@zocom/types';
 
-export const addItem = (product: Product) => ({
-    type: 'ADD_TO_CART',
-    payload: product
+export const addItem = (
+  item: WontonItem | DipItem,
+  itemType: 'wonton' | 'dip'
+) => ({
+  type: 'ADD_TO_CART',
+  payload: { item, itemType },
 });
 
-export const decrease = (product: Product) => ({
-    type: 'DECREASE',
-    payload: product
-})
+export const decrease = (
+  item: WontonItem | DipItem,
+  itemType: 'wonton' | 'dip'
+) => ({
+  type: 'DECREASE',
+  payload: { item, itemType },
+});
 
-export const increase = (product: Product) => ({
-    type: 'INCREASE',
-    payload: product
-})
+export const increase = (
+  item: WontonItem | DipItem,
+  itemType: 'wonton' | 'dip'
+) => ({
+  type: 'INCREASE',
+  payload: { item, itemType },
+});
+
+export const clearCart = (
+  item: WontonItem | DipItem,
+  itemType: 'wonton' | 'dip'
+) => ({
+  type: 'CLEAR_CART',
+  payload: { item, itemType },
+});

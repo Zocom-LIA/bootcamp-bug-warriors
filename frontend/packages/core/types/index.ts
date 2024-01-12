@@ -12,10 +12,10 @@ export enum StyleTypes {
 }
 
 export interface BaseProduct {
-  name: string,
-  desc: string,
-  price: number,
-  quantity: number
+  name: string;
+  desc: string;
+  price: number;
+  quantity: number;
 }
 
 interface Wonton extends BaseProduct {
@@ -37,7 +37,7 @@ export interface WontonItem {
 }
 
 export interface DipItem {
-  index: number;
+  //index: number;
   name: string;
   desc: string;
   price: number;
@@ -47,4 +47,31 @@ export interface DipItem {
 export interface MenuList {
   wonton: WontonItem[];
   dip: DipItem[];
+}
+
+export interface ItemInOrder {
+  name: string;
+  quantity: number;
+  price: number;
+}
+
+export interface OrderItem {
+  eta: number;
+  totalPrice: number;
+  status: string;
+  SK: string;
+  orderTime: number;
+  items: ItemInOrder[];
+}
+
+export enum OrderStatus {
+  Pending = 'Pending',
+  Preparing = 'Preparing',
+  ReadyForDelivery = 'ReadyForDelivery',
+  Delivered = 'Delivered',
+}
+
+export enum CartButtonStyles {
+  'MENU' = 'menu',
+  'CART' = 'cart',
 }

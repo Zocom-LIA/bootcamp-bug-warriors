@@ -4,6 +4,9 @@ import { functions } from "src/serverless/seedData/functions";
 import { customConfig } from "src/serverless/seedData/esbuild";
 import { DynamoResources } from "src/serverless/seedData/dynamodb";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const serverlessConfiguration: AWS = {
   service: "YUM-YUM",
   frameworkVersion: "3",

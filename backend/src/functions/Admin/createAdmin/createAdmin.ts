@@ -20,7 +20,7 @@ export const createAdmin = async (
   adminDetails: AdminDetails
 ): Promise<DatabaseResponse> => {
   const queryUserParams: QueryUserParams = {
-    TableName: "Yum-Yum-table",
+    TableName: process.env.YUM_YUM_TABLE,
     IndexName: "UsernameIndex",
     KeyConditionExpression: "username = :username",
     ExpressionAttributeValues: {
@@ -39,7 +39,7 @@ export const createAdmin = async (
     const adminId: string = nanoid();
 
     const putUserParams: PutUserParams = {
-      TableName: "Yum-Yum-table",
+      TableName: process.env.YUM_YUM_TABLE,
       Item: {
         PK: { S: "Admin" },
         SK: { S: `Admin#${adminId}` },

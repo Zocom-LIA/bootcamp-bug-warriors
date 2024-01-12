@@ -1,9 +1,71 @@
-import React from 'react';
+import './style.scss';
+import { img } from '@zocom/status-img';
+import { Status } from '@zocom/status';
+import { TopBar } from '@zocom/top-bar';
+import { Styles, Wrapper } from '@zocom/wrapper';
+import { ButtonType, Button } from '@zocom/button';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export const OrderStatus = () => {
+function notifyMe() {
+  if (!('Notification' in window)) {
+    alert('This browser does not support desktop notification');
+  } else if (Notification.permission === 'granted') {
+    const notification = new Notification('Din order är redo!');
+    // …
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        const notification = new Notification('Din order är redo!');
+        // …
+      }
+    });
+  }
+}
+
+export const OrderStatusPage = () => {
+  const orderId = useLocation().state;
+  const navigate = useNavigate();
+  const orderItem = localStorage.getItem(orderId);
+  let eta = 0;
+  if (orderItem) {
+    eta = JSON.parse(orderItem).eta;
+  }
+  const [timeLeftInMinutes, setTimeLeftInMinutes] = useState(eta);
+  const [orderReady, setOrderReady] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (timeLeftInMinutes > 1) {
+        setTimeLeftInMinutes(timeLeftInMinutes - 1);
+      } else {
+        notifyMe();
+        setOrderReady(true);
+      }
+    }, 60000);
+    return () => clearTimeout(timer);
+  }, [timeLeftInMinutes]);
+
   return (
-    <div>
-      <h1>Order Status</h1>
-    </div>
+    <Wrapper style={orderReady ? Styles.DONE : Styles.ETA}>
+      <TopBar />
+      <img src={img} />
+      <Status
+        eta={timeLeftInMinutes}
+        orderNr={`#${orderId}`}
+        orderReady={orderReady}
+      />
+      <div className='status__button-container'>
+        <Button type={ButtonType.REGULAR} onClick={() => navigate('/')}>
+          BESTÄLL MER
+        </Button>
+        <Button
+          type={ButtonType.INVERTED}
+          onClick={() => navigate('/receipt', { state: orderItem })}
+        >
+          SE KVITTO
+        </Button>
+      </div>
+    </Wrapper>
   );
 };

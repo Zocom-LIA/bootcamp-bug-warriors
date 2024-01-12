@@ -1,0 +1,4 @@
+{
+  "name": "@zocom/receipt-card",
+  "main": "./index.ts"
+}

@@ -1,0 +1,26 @@
+@use '@zocom/styles' as *;
+
+.dashboard-column {
+  @include center;
+  justify-content: center;
+  background-color: $coal;
+  margin: $margin;
+  overflow: hidden;
+  &__head {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    h2 {
+      @include fontsizeLarge;
+    }
+    &__line {
+      width: 100%;
+      height: 1px;
+      background-color: $shade-24-light;
+    }
+  }
+}
+.dasboard__wrapper {
+  width: 100%;
+}

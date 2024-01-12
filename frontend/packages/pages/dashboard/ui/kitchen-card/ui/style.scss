@@ -1,0 +1,42 @@
+@use '@zocom/styles' as *;
+
+.kitchen-card {
+  box-shadow: $shadow-sml;
+  width: 22rem;
+  border-radius: 5px;
+  padding: $baseline;
+  margin: $margin;
+  color: $clay;
+  h2 {
+    text-align: right;
+    @include fontsizeMedium;
+    margin: $margin 0;
+  }
+  &__ordernum {
+    @include fontsizeLarge;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: $margin-large;
+  }
+  &__info {
+    border-bottom: 1px solid $shade-24-dark;
+  }
+}
+
+.Preparing {
+  background-color: $bacon;
+  button {
+    background-color: $alert;
+    padding: $padding;
+    margin-top: $margin;
+  }
+}
+
+.ReadyForDelivery {
+  background-color: $light-mint;
+  button {
+    background-color: $dark-mint;
+    padding: $padding;
+    margin-top: $margin;
+  }
+}
